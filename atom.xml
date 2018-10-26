@@ -18,8 +18,8 @@
   
   <entry>
     <title>test</title>
-    <link href="http://yoursite.com/2018/10/26/test-1/"/>
-    <id>http://yoursite.com/2018/10/26/test-1/</id>
+    <link href="http://yoursite.com/2018/10/26/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2018/10/26/第一次使用hexo搭建博客的记录/</id>
     <published>2018-10-26T05:12:07.218Z</published>
     <updated>2018-10-26T07:05:09.508Z</updated>
     
@@ -63,8 +63,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/10/26/test/"/>
-    <id>http://yoursite.com/2018/10/26/test/</id>
+    <link href="http://yoursite.com/2018/10/26/hello-world/"/>
+    <id>http://yoursite.com/2018/10/26/hello-world/</id>
     <published>2018-10-26T03:40:49.350Z</published>
     <updated>2018-10-26T03:40:49.351Z</updated>
     
