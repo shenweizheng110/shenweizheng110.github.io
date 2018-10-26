@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>唯你の博客 - 记录生活学习中的事迹或bug</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言,基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是he,"> 
+    <meta name="author" content="ShenWeiZheng"> 
+    <link rel="alternative" href="atom.xml" title="唯你の博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">关于springboot post方法参数为两个实体类的解决办法</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">关于springboot post方法参数为两个实体类的解决办法</h1>
+        <div class="stuff">
+            <span>十月 26, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。</p>
+<h2 id="1-分装成dto"><a href="#1-分装成dto" class="headerlink" title="1.分装成dto"></a>1.分装成dto</h2><p>如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teacher一个是Course course 这样前台传参的时候<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">teacher</span>: value1,</span><br><span class="line">    course: value2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以了</p>
+<h2 id="2-采用-InitBinder注解"><a href="#2-采用-InitBinder注解" class="headerlink" title="2.采用@InitBinder注解"></a>2.采用@InitBinder注解</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"student"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderStudent</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"student."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"course"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderCourse</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"course."</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>@InitBinder() 中间的value值，用于指定表单属性或请求参数的名字，符合该名字的将使用此处的DataBinder<br>注意： binder.setFieldDefaultPrefix(“student.”)，这里的”.”千万别忘记了！！！<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;  </span><br><span class="line">  <span class="comment">//get..set....  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;</span><br><span class="line">  <span class="comment">//set..get...  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这边两个实体类，加上我们上面的initBinder注解 还要在ctrl上做点动作<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/classtest"</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> TestController &#123;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"student"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderUser(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"student."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"course"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderAddr(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"course."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/methodtest"</span>)  </span><br><span class="line">    <span class="meta">@ResponseBody</span>  </span><br><span class="line">   <span class="keyword">public</span> Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; test(<span class="meta">@ModelAttribute</span>(<span class="string">"student"</span>) Student student,<span class="meta">@ModelAttribute</span>(<span class="string">"course"</span>) Course course)&#123;  </span><br><span class="line">        Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; map=<span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();  </span><br><span class="line">        map.put(<span class="string">"student"</span>, student);  </span><br><span class="line">        map.put(<span class="string">"course"</span>, course);  </span><br><span class="line">        <span class="keyword">return</span> map;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>ctrl上的参数使用@ModelAttribute注解指定，这样就可以实现参数两个实体类，不用再去多写一个dto了<br>当然这种方法也有缺陷，具体参考<a href="https://www.jianshu.com/p/59771cbf373d" target="_blank" rel="noopener">SpringMVC表单多对象传递小技巧——@InitBinder</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="true" data-ci="9f534a291c55397d64fa" data-cs="33d58e59271d6a94ca18d48f498ae86504597867" data-r="shenweizheng110.github.io" data-o="shenweizheng110" data-a="shenweizheng110" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
