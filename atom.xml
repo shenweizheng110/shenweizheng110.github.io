@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-27T09:50:53.143Z</updated>
+  <updated>2018-10-27T14:28:26.912Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>window.open被拦截解决</title>
+    <link href="http://yoursite.com/2018/10/27/window.open%E8%A2%AB%E6%8B%A6%E6%88%AA/"/>
+    <id>http://yoursite.com/2018/10/27/window.open被拦截/</id>
+    <published>2018-10-27T14:28:10.002Z</published>
+    <updated>2018-10-27T14:28:26.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>项目开发中遇到window.open写在回调里被浏览器拦截.<br>解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newWindow = <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>); <span class="comment">//  新开一个tab页返回一个window对象</span></span><br><span class="line">axios.post(url&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.data.status.code === <span class="number">1</span>)&#123;</span><br><span class="line">            newWindow.location.href = <span class="string">''</span> <span class="comment">//  修改新开页面的地址</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;项目开发中遇到window.open写在回调里被浏览器拦截.&lt;br&gt;解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo博客配置</title>

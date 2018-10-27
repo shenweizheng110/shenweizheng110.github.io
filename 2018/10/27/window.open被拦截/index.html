@@ -24,7 +24,62 @@
 </html>
 <body class="loading">
     <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">window.open被拦截解决</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">window.open被拦截解决</h1>
+        <div class="stuff">
+            <span>十月 27, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>项目开发中遇到window.open写在回调里被浏览器拦截.<br>解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newWindow = <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>); <span class="comment">//  新开一个tab页返回一个window对象</span></span><br><span class="line">axios.post(url&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.data.status.code === <span class="number">1</span>)&#123;</span><br><span class="line">            newWindow.location.href = <span class="string">''</span> <span class="comment">//  修改新开页面的地址</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="5e883d0c002d8cf24dcc" data-cs="dbe7c606c55b0e0dd34ce41f34d8e9d88f20f449" data-r="shenweizheng110.github.io" data-o="shenweizheng110" data-a="shenweizheng110" data-d="true">查看评论</div>
+
+    </div>
     
+</div>
+
+
+    </div>
+</div>
 </body>
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
