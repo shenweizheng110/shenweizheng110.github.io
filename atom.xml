@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-27T14:28:26.912Z</updated>
+  <updated>2018-10-28T03:33:35.510Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react应用中mobx未检测到数组的更新</title>
+    <link href="http://yoursite.com/2018/10/28/react%E5%BA%94%E7%94%A8%E4%B8%ADmobx%E6%9C%AA%E6%A3%80%E6%B5%8B%E5%88%B0%E6%95%B0%E7%BB%84%E7%9A%84%E6%9B%B4%E6%96%B0/"/>
+    <id>http://yoursite.com/2018/10/28/react应用中mobx未检测到数组的更新/</id>
+    <published>2018-10-28T03:33:28.314Z</published>
+    <updated>2018-10-28T03:33:35.510Z</updated>
+    
+    <content type="html"><![CDATA[<p>在mobx中定义一个可观察的数组<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span>&#123;</span></span><br><span class="line">    @observable testArray = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>在组件里面引用这个store<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p><p>这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规的array类型了，已经被mobx转换成了observableArray类型的数组，这种的如果你的store里面只有这一个数组没有其他变量的时候，更新整个数组，除非你是将这个数组置为空，不然组件是不会观察到他的改变，就不会重新render了<br>解决办法是：<br>在组件中使用这个数组的时候，slice()一下转变成我们正常的js类型的array就可以了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.slice().map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p><p>具体slice的地方可以是在store里面也可以在组件里面，组件里面就像上面写的那样,store里面就是先得到testArray然后slice一下，在把新的数组赋值给他。<br>如果遇到使用数组的时候出现一些看不懂的报错，排除数组越界的一些错误，多半是因为observableArray类型的问题，这个时候不妨slice()一下试试。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在mobx中定义一个可观察的数组&lt;br&gt;&lt;figure class=&quot;highlight coffeescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>window.open被拦截解决</title>

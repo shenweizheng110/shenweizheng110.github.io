@@ -29,7 +29,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">window.open被拦截解决</h3>
+    <h3 class="subtitle">react应用中mobx未检测到数组的更新</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -46,15 +46,17 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">window.open被拦截解决</h1>
+        <h1 class="title">react应用中mobx未检测到数组的更新</h1>
         <div class="stuff">
-            <span>十月 27, 2018</span>
+            <span>十月 28, 2018</span>
             
 
         </div>
         <div class="content markdown">
-            <p>项目开发中遇到window.open写在回调里被浏览器拦截.<br>解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newWindow = <span class="built_in">window</span>.open(<span class="string">'about:blank'</span>); <span class="comment">//  新开一个tab页返回一个window对象</span></span><br><span class="line">axios.post(url&#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">response</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.data.status.code === <span class="number">1</span>)&#123;</span><br><span class="line">            newWindow.location.href = <span class="string">''</span> <span class="comment">//  修改新开页面的地址</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+            <p>在mobx中定义一个可观察的数组<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span>&#123;</span></span><br><span class="line">    @observable testArray = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在组件里面引用这个store<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p>
+<p>这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规的array类型了，已经被mobx转换成了observableArray类型的数组，这种的如果你的store里面只有这一个数组没有其他变量的时候，更新整个数组，除非你是将这个数组置为空，不然组件是不会观察到他的改变，就不会重新render了<br>解决办法是：<br>在组件中使用这个数组的时候，slice()一下转变成我们正常的js类型的array就可以了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.slice().map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p>
+<p>具体slice的地方可以是在store里面也可以在组件里面，组件里面就像上面写的那样,store里面就是先得到testArray然后slice一下，在把新的数组赋值给他。<br>如果遇到使用数组的时候出现一些看不懂的报错，排除数组越界的一些错误，多半是因为observableArray类型的问题，这个时候不妨slice()一下试试。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
