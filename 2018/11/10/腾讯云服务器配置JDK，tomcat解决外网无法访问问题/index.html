@@ -81,7 +81,7 @@
 <p>接下来重启一下服务器，不知道要不要重启，反正我是重启了一下。之后再去访问一下80端口，看能不能出现tomcat的主页，如果还是不行，那么接下去我们继续配置，这边安全组是已经都开启了，接下来我们查看80端口有没有开启。<br><img src="http://static.zybuluo.com/shenweizheng/ajfaio341tmx3l9idey0ylsq/image_1crtrscii1ls21anrl9417411oq762.png" alt="image_1crtrscii1ls21anrl9417411oq762.png-20.2kB"></p>
 <p>我这边是已经配置好了的，所以80端口是开启的，如果你的80端口没有开启，那么下面我们去搞一下防火墙。<br>首先我们查看一下防火墙的状态<br><img src="http://static.zybuluo.com/shenweizheng/xnj3z2ymgshz32aylpes248g/image_1crts1red1bu81bfd50d4q1dio6f.png" alt="image_1crts1red1bu81bfd50d4q1dio6f.png-14.5kB"></p>
 <p>发现现在防火墙是关闭的，这边我们先开启一下防火墙，不然待会出现filreWalld not runnuind的错<br><img src="http://static.zybuluo.com/shenweizheng/xs7nmzqmlgvdzwi1anzg7cvf/image_1crtsqrhpmbqirf1n2g17p0n2s6s.png" alt="image_1crtsqrhpmbqirf1n2g17p0n2s6s.png-10.2kB"></p>
-<p>这边配置好了之后，我们进入tomcat的bin目录下重启一下服务器。<br><img src="http://static.zybuluo.com/shenweizheng/objwn9diivl04baejjzuw4ru/image_1crtssq284be17641u821v391dgc79.png" alt="image_1crtssq284be17641u821v391dgc79.png-83.6kB"></p>
+<p>这边配置好了之后，我们在吧防火墙关闭一下<br><code>systemctl stop firewalld</code>，我们进入tomcat的bin目录下重启一下服务器。<br><img src="http://static.zybuluo.com/shenweizheng/objwn9diivl04baejjzuw4ru/image_1crtssq284be17641u821v391dgc79.png" alt="image_1crtssq284be17641u821v391dgc79.png-83.6kB"></p>
 <p>如果你在关闭的时候遇到Neither the JAVA_HOME nor the JRE_HOME environment variable is defined这个报错的时候，使用vim修改一下bin目录下的setclasspath.sh，手动添加JAVA_HOME和JRE_HOME两个环境变量。<br><img src="http://static.zybuluo.com/shenweizheng/i7us0bl35qtytmr8ie00rchh/image_1crtt3g1d1lno1552p601sr325f83.png" alt="image_1crtt3g1d1lno1552p601sr325f83.png-269.3kB"></p>
 <p>关闭之后，在启动一下tomcat，打开浏览器，访问公网ip访问，出现tomcat主页。如果还是没有出现的话，就无能为力了。</p>
 
