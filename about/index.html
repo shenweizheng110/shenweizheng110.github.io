@@ -38,7 +38,7 @@
 
 <!-- header -->
 
-	<header id="header-bg-2">
+	<header id="header-bg-1" style="background-image: url( /img/back-9.jpg );">	
 
 	
 		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
@@ -95,7 +95,7 @@
 <script type="text/javascript">
 	function changeHeaderBg(){
 		var random_bg = Math.floor(Math.random() * 109 + 1);
-		var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+		var bg = 'url(' + random_bg + '.jpg)';
 		$("#header-bg-2").css("background-image", bg);
 	}
 </script>
@@ -474,7 +474,7 @@
 
               // select top N slices in content
 
-              var upperBound = parseInt('2');
+              var upperBound = parseInt('-1');
               if (upperBound >= 0) {
                 slicesOfContent = slicesOfContent.slice(0, upperBound);
               }
@@ -596,7 +596,7 @@
 	var random_bg = Math.floor(Math.random() * 109 + 1);
 
 	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
-	var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+	var bg = 'url(' + random_bg + '.jpg)';
 
 	$("#header-bg-2").css("background-image", bg);
 </script>
