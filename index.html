@@ -1,253 +1,993 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 
-<!DOCTYPE html>
-<html lang="zh-Hans" class="loading">
+
+	<!DOCTYPE html>
+	<html>
+		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>
-        唯你の博客
-         -
-        记录生活学习中的事迹或bug
-        
-    </title>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    
-    <meta name="keywords" content="shenweizheng110,">
-    
-    
-    <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言,最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多,">
-    
-    
+	<title>唯你の博客</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="ShenWeiZheng">
-    
-    
-    <link rel="alternative" href="atom.xml" title="唯你の博客" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
-</head></html>
-<body class="loading">
-    <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class=" pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/whoami/" title="Whoami" target="_blank" rel="noopener">Whoami</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://github.com/shenweizheng110" title="Github" target="_blank" rel="noopener">Github</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://twitter.com/shenweizheng110" title="Twitter" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        
-    </ul>
-    <p id="copyright">
-        &copy;
-        2018
-        ShenWeiZheng.
-        Powered by
-        <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme
-        <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
-        by Fechin
-    </p>
+    <meta name="keywords" content="唯你">
+    <meta name="description" content="记录生活学习中的事迹或bug">
+   	<!-- css -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- favicon -->
+	<link href="/img/favicon.ico" rel="Shortcut Icon" type="image/ico">
+	
+	<!-- font-awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+	<body>	
+		<!--Preloader-->
+<div id="preloader">
+	<div id="status">
+		<img alt="PRELOADER" src="/img/logo.png">
+	</div>
 </div>
-<div id="container">
-    
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/img/back-6.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewbox="0 0 2880 1620" height="100%" preserveaspectratio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
-        <div>
-            <a class="image-logo" href="/"></a>
-            <div class="icon-menu switchmenu"></div>
-        </div>
-    </div>
-    
-    <div id="post0">
-        <p>十二月 03, 2018</p>
-        <h2><a href="/2018/12/03/webpack配置及踩过的那些坑/" title="webpack配置及踩过的那些坑" class="posttitle">webpack配置及踩过的那些坑</a></h2>
-        <p class="summary">最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接...</p>
-    </div>
-    
-</div>
+<!--Preloader end-->
 
-    <div id="primary">
-        
-<div class="post">
-    <a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" title="腾讯云服务器配置JDK，tomcat解决外网无法访问问题">
-        <img src="/img/7.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十一月 10, 2018</p>
-        <h3><a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" title="腾讯云服务器配置JDK，tomcat解决外网无法访问问题" class="posttitle">腾讯云服务器配置JDK，tomcat解决外网无法访问问题</a></h3>
-        <p>前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接...</p>
-    </div>
-</div>
+<!-- header -->
 
+	<header id="header-bg-2">
 
-<div class="post">
-    <a href="/2018/11/01/常用样式汇总/" title="常用样式汇总">
-        <img src="/img/6.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十一月 01, 2018</p>
-        <h3><a href="/2018/11/01/常用样式汇总/" title="常用样式汇总" class="posttitle">常用样式汇总</a></h3>
-        <p>1.小手样式1cursor: pointer
-2.垂直居中使用flex布局123&lt;div class="outer"&gt;    &lt;div ...</p>
-    </div>
-</div>
+	
+		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
+	
+	
+	<!-- motto or description -->
+		
+ 		<p class="motto">无做什么，记得为自己而做，那就毫无怨言</p>
+	
+	
+	<!-- current page name or title -->
+	
+		
+		
+			
+			<p class="page-name">主页</p>	
+			
+		
+	
+	
+	<!-- others: such as change-bg, time... -->
+	<p class="page-name-other">
+		12/5/2018 
+		<style type="text/css">
+	header:after {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: #222222;
+		opacity: .5;
+		z-index: -1;
+	}
+	
+	.change-header-bg{
+		font-style: normal;
+	}
+	.change-header-bg i{
+		text-align: center;
+		cursor: pointer;
+		pointer-events: bounding-box;
+	}
+	@media(max-width:512px) {
+		.change-header-bg {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	
+</style>
 
+<script type="text/javascript">
+	function changeHeaderBg(){
+		var random_bg = Math.floor(Math.random() * 109 + 1);
+		var bg = 'url(http://shenweizheng110.github.io/Random-img/' + random_bg + '.jpg)';
+		$("#header-bg-2").css("background-image", bg);
+	}
+</script>
 
-<div class="post">
-    <a href="/2018/10/28/window.open被拦截/" title="window.open被拦截解决">
-        <img src="/img/4.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 28, 2018</p>
-        <h3><a href="/2018/10/28/window.open被拦截/" title="window.open被拦截解决" class="posttitle">window.open被拦截解决</a></h3>
-        <p>项目开发中遇到window.open写在回调里被浏览器拦截.解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.
-1234567...</p>
-    </div>
-</div>
+<span class="change-header-bg">
+	——&nbsp;<i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>	
+</span>
+	</p>		
+</header>
 
+<!-- nav -->
+<div id="cd-nav">
+	<a href="#0" title="menu" class="cd-nav-trigger"><span></span></a>
 
-<div class="post">
-    <a href="/2018/10/28/react应用中mobx未检测到数组的更新/" title="react应用中mobx未检测到数组的更新">
-        <img src="/img/5.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 28, 2018</p>
-        <h3><a href="/2018/10/28/react应用中mobx未检测到数组的更新/" title="react应用中mobx未检测到数组的更新" class="posttitle">react应用中mobx未检测到数组的更新</a></h3>
-        <p>在mobx中定义一个可观察的数组123class Store&#123;    @observable testArray = [];&#125;
-在组件...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2018/10/27/hexo博客配置/" title="hexo博客配置">
-        <img src="/img/2.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 27, 2018</p>
-        <h3><a href="/2018/10/27/hexo博客配置/" title="hexo博客配置" class="posttitle">hexo博客配置</a></h3>
-        <p>1.网站图标更换themes\hexo-theme-Annie\layout_partial\head.ejs1&lt;link href="&lt;%-...</p>
-    </div>
+	<nav id="cd-main-nav">
+		<ul>
+			
+      		<li class="fa fa-/">
+           		<a href="/" title="主页">主页</a>	
+      		</li>
+    		
+      		<li class="fa fa-/archives">
+           		<a href="/archives" title="归档">归档</a>	
+      		</li>
+    		
+      		<li class="fa fa-/categories">
+           		<a href="/categories" title="分类">分类</a>	
+      		</li>
+    		
+      		<li class="fa fa-/tags">
+           		<a href="/tags" title="标签">标签</a>	
+      		</li>
+    		
+      		<li class="fa fa-/about">
+           		<a href="/about" title="关于">关于</a>	
+      		</li>
+    		
+      		<li class="fa fa-/gallery">
+           		<a href="/gallery" title="相册">相册</a>	
+      		</li>
+    		
+    		
+        	
+            	<li class="fa fa-/search"><a href="javascript:;" class="popup-trigger" title="Search">搜索</a></li>
+        	
+		</ul>
+	</nav>
 </div>
 
+		<!--main-->
+		<main> 
+		<div class="page-container">
+		
+	<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed">
+	<div class="am-u-md-12 am-u-sm-12">
 
-<div class="post">
-    <a href="/2018/10/26/第一次使用hexo搭建博客的记录/" title="第一次使用hexo搭建博客的记录">
-        <img src="/img/3.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 26, 2018</p>
-        <h3><a href="/2018/10/26/第一次使用hexo搭建博客的记录/" title="第一次使用hexo搭建博客的记录" class="posttitle">第一次使用hexo搭建博客的记录</a></h3>
-        <p>基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始...</p>
-    </div>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/8.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/12/03/webpack配置及踩过的那些坑/" itemprop="url">
+	<time datetime="2018-12-03T07:19:14.432Z" itemprop="datePublished">
+  		2018-12-03
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/12/03/webpack配置及踩过的那些坑/" itemprop="url">		
+			webpack配置及踩过的那些坑		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。
+1.基础准备创建一个文件夹webpackDemo，我们使用命令行进入这个文件夹，运行 npm init 命令，初始化这个文件夹，初	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/12/03/webpack配置及踩过的那些坑/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/7.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" itemprop="url">
+	<time datetime="2018-11-10T04:26:52.541Z" itemprop="datePublished">
+  		2018-11-10
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" itemprop="url">		
+			腾讯云服务器配置JDK，tomcat解决外网无法访问问题		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接下来改了tomcat的配置终于成功，记录一下。我用的是腾讯云的学生服务器，操作系统是CentOS7.2 64位 JDK版本是1.8.0 tomcat版本是8.5.34准备一下XShell工具，我是使用的XShell。还有一个WinScp工具用来上	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/6.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/11/01/常用样式汇总/" itemprop="url">
+	<time datetime="2018-11-01T13:45:17.265Z" itemprop="datePublished">
+  		2018-11-01
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/11/01/常用样式汇总/" itemprop="url">		
+			常用样式汇总		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								1.小手样式1cursor: pointer
+2.垂直居中使用flex布局123&lt;div class="outer"&gt;    &lt;div class="inner"&gt;&lt;/div&gt;&lt;/div&gt;
+1234567891011121314.outer &#123;    width: 300px;    height: 300px;    border: 1p	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/11/01/常用样式汇总/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/4.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/10/28/window.open被拦截/" itemprop="url">
+	<time datetime="2018-10-28T04:24:31.476Z" itemprop="datePublished">
+  		2018-10-28
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/10/28/window.open被拦截/" itemprop="url">		
+			window.open被拦截解决		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								项目开发中遇到window.open写在回调里被浏览器拦截.解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.
+12345678910let newWindow = window.open('about:blank'); //  新开一个tab页返回一个window对象axios.post(url&#125;)    .then(response=&gt;&#123; 	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/10/28/window.open被拦截/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/5.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" itemprop="url">
+	<time datetime="2018-10-28T03:33:28.314Z" itemprop="datePublished">
+  		2018-10-28
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" itemprop="url">		
+			react应用中mobx未检测到数组的更新		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								在mobx中定义一个可观察的数组123class Store&#123;    @observable testArray = [];&#125;
+在组件里面引用这个store123testArray.map(item=&gt;(    &lt;span&gt;&#123;item&#125;&lt;/span&gt;))
+这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/2.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/10/27/hexo博客配置/" itemprop="url">
+	<time datetime="2018-10-27T09:41:26.428Z" itemprop="datePublished">
+  		2018-10-27
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/10/27/hexo博客配置/" itemprop="url">		
+			hexo博客配置		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								1.网站图标更换themes\hexo-theme-Annie\layout_partial\head.ejs1&lt;link href="&lt;%- config.root %&gt;img/favicon.ico" rel="Shortcut Icon" type="image/ico"&gt;
+我中间这个hexo-theme-Annie 是我的主题名字，只要路径差不多，找到layout_	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/10/27/hexo博客配置/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/3.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/10/26/第一次使用hexo搭建博客的记录/" itemprop="url">
+	<time datetime="2018-10-26T05:12:07.218Z" itemprop="datePublished">
+  		2018-10-26
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/10/26/第一次使用hexo搭建博客的记录/" itemprop="url">		
+			第一次使用hexo搭建博客的记录		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。
+1.创建一个github账户这个直接官网创建 GitHub
+2.创建一个本地仓库这里要注意你的Repository name	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/10/26/第一次使用hexo搭建博客的记录/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		
+			<article class="am-g blog-entry-article">
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+					<img src="/img/1.jpg" class="am-u-sm-12">
+				</div>	
+
+				<div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+					<span class="theme-annie-post-date">
+						<a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" itemprop="url">
+	<time datetime="2018-10-26T05:12:07.175Z" itemprop="datePublished">
+  		2018-10-26
+  </time>
+</a>    
+
+					</span>
+					<span class="theme-annie-post-title">
+						
+	
+		<a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" itemprop="url">		
+			关于springboot post方法参数为两个实体类的解决办法		
+		</a>
+	
+
+					</span>
+					
+					
+						<p>
+							
+								前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。
+1.分装成dto如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teac	
+							  
+						</p> 
+					
+
+					
+						<span class="continue-read">      	
+							<a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" class="pull-right">
+								展开全文
+							</a>		
+						</span>
+					         		
+				</div>
+		
+			</article>
+		     
+
+		    	
+	</div>
 </div>
+<!-- content end -->
+
+	<!--图文风格-->
+
+		</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="blog-text-center">
+		<div class="theme-annie-social">
+				
+				
+					<a href="http://github.com/" title="Github" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Weibo" target="_blank"><i class="fa fa-weibo"></i>&nbsp;</a>
+				
+				
+					<a href="http://github.com/" title="Email" target="_blank"><i class="fa fa-envelope-o"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="QQ" target="_blank"><i class="fa fa-qq"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>&nbsp;</a>
+						
+				
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			
+				&copy; 2017 - 2018, content by ShenWeiZheng. All Rights Reserved.			       	
+			
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.		
+		</div>
+	</div>
+</footer>
+		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
+
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+
+<style>
+	.motto {
+		color: #000000;
+		font-size: 20px;
+		margin: 100px 25% 0;
+		width: 50%;
+		line-height: 1.4;
+		font-family:"KaiTi", "STXingkai", "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+		text-align: center;
+	}
+	@media(max-width: 890px) {
+		.motto {	
+			margin: 100px 10% 0;
+			width: 80%;
+		}
+	}
+	@media(max-width: 890px) {
+		.motto {
+			margin: 100px 5% 0;
+			width: 90%;
+		}
+	}
+</style>
 
 
-<div class="post">
-    <a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" title="关于springboot post方法参数为两个实体类的解决办法">
-        <img src="/img/1.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 26, 2018</p>
-        <h3><a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" title="关于springboot post方法参数为两个实体类的解决办法" class="posttitle">关于springboot post方法参数为两个实体类的解决办法</a></h3>
-        <p>前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。
-1.分装成dto如果两...</p>
-    </div>
-</div>
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
 
 
-    </div>
-    
-</div>
-<div id="preview"></div>
 
-</body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+	<div class="popup search-popup local-search-popup">
+    <span class="popup-btn-close">
+      ESC
+    </span>
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
 
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
+        <div class="local-search-header clearfix">
+            <span class="search-icon"></span>
+            <div class="local-search-input-wrapper">
+              <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
             </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
         </div>
+
+        <div id="local-search-result"></div>
+
+      </div>
     </div>
 </div>
 
+<script src="/js/ziploader.js"></script>
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // get search zip version
+    $.get('/?t=' + (+new Date()), function(res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson () {
+      initLoad(['/'], {
+        loadOptions: {
+          success: function(obj) {
+            localStorage.setItem('searchJson', obj['search.xml'])
+          },
+          error: function(e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions:{
+          'json':'application/json'
+        }
+      })
+    }
+
+    // search function;
+    var searchFunc = function(search_id, content_id) {
+      'use strict';
+
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function() {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function(data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title ? data.title.trim() : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function(keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0, position = [], index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+
+            // show search results
+
+            if (isMatch) {
+              // sort index by position of keyword
+
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+
+              // merge hits into slices
+
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+
+                  // move to next position of hit
+
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {
+                  hits: hits,
+                  start: start,
+                  end: end,
+                  searchTextCount: searchTextCountInSlice
+                };
+              }
+
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if(start < 0){
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if(end > content.length){
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+
+              // sort slices in content by search text's count and hits' count
+
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+
+              // select top N slices in content
+
+              var upperBound = parseInt('2');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+
+              // highlight title and content
+
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+
+              var resultItem = '';
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+              } else {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+              }
+
+              slicesOfContent.forEach(function (slice) {
+                resultItem +=  "<p class=\"search-result\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+
+              resultItem += "</li>";
+              resultItems.push({
+                item: resultItem,
+                searchTextCount: searchTextCount,
+                hitCount: hitCount,
+                id: resultItems.length
+              });
+            }
+          })
+        };
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /> no result </div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<ul class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</ul>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+
+      // remove loading animation
+      $('body').css('overflow', '');
+
+      proceedsearch();
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        $('.sb-close').click();
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
-</html>
+
+
+	<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript">
+	//generate a random img that pre_name 'from 0 to 110'
+	var random_bg = Math.floor(Math.random() * 109 + 1);
+
+	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
+	var bg = 'url(http://shenweizheng110.github.io/Random-img/' + random_bg + '.jpg)';
+
+	$("#header-bg-2").css("background-image", bg);
+</script>
+		
+		<!--back to top-->
+        <style type="text/css">
+	#totop {
+		background: white;
+		border-radius: 50%;
+		position: fixed;
+		right: 5.4%;
+		bottom: 80px;
+		cursor: pointer;
+	}
+	
+	#totop a {
+		color: #474747;
+		background-color: transparent;
+		padding: 10px;
+		text-decoration: none;
+	}
+	
+	@media(max-width:512px) {
+		#totop {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+
+	<div id="totop">
+  		<a href="javascript:;" class="fa fa-arrow-up"></a>
+	</div>
+
+	</body>
+	</html>
+

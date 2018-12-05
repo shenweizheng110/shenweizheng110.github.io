@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>关于springboot post方法参数为两个实体类的解决办法</title>
+	<title>category: HEXO博客</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,8 +54,8 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《关于springboot post方法参数为两个实体类的解决办法》</p>
-			
+			<p class="page-name">分类</p>
+		
 		
 	
 	
@@ -151,198 +151,50 @@
 		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
+		<div class="archive">
 
-		<article class="am-article blog-article-p">
-
-			<div class="am-article-hd">
+			<div class="blog-text-center">
 				
-
-
-				<h1 class="am-article-title blog-text-center">
-					
-					
-	
-		<a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" itemprop="url">		
-			关于springboot post方法参数为两个实体类的解决办法		
-		</a>
-	
-
-				</h1>
-
-				<p class="am-article-meta blog-text-center">
-					<span>
-						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/" itemprop="url">
-	<time datetime="2018-10-26T05:12:07.175Z" itemprop="datePublished">
-  		2018-10-26
-  </time>
-</a>    
-&nbsp;
-					</span>
-					
-					<span>						
-						
-					</span>
-				</p>
-			</div>
-
-			<div class="am-article-bd">
-				<div class="content" id="post-content">
-					
-						<p>前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。</p>
-<h2 id="1-分装成dto"><a href="#1-分装成dto" class="headerlink" title="1.分装成dto"></a>1.分装成dto</h2><p>如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teacher一个是Course course 这样前台传参的时候<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">teacher</span>: value1,</span><br><span class="line">    course: value2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以了</p>
-<h2 id="2-采用-InitBinder注解"><a href="#2-采用-InitBinder注解" class="headerlink" title="2.采用@InitBinder注解"></a>2.采用@InitBinder注解</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"student"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderStudent</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"student."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"course"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderCourse</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"course."</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>@InitBinder() 中间的value值，用于指定表单属性或请求参数的名字，符合该名字的将使用此处的DataBinder<br>注意： binder.setFieldDefaultPrefix(“student.”)，这里的”.”千万别忘记了！！！<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;  </span><br><span class="line">  <span class="comment">//get..set....  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;</span><br><span class="line">  <span class="comment">//set..get...  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这边两个实体类，加上我们上面的initBinder注解 还要在ctrl上做点动作<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/classtest"</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> TestController &#123;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"student"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderUser(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"student."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"course"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderAddr(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"course."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/methodtest"</span>)  </span><br><span class="line">    <span class="meta">@ResponseBody</span>  </span><br><span class="line">   <span class="keyword">public</span> Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; test(<span class="meta">@ModelAttribute</span>(<span class="string">"student"</span>) Student student,<span class="meta">@ModelAttribute</span>(<span class="string">"course"</span>) Course course)&#123;  </span><br><span class="line">        Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; map=<span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();  </span><br><span class="line">        map.put(<span class="string">"student"</span>, student);  </span><br><span class="line">        map.put(<span class="string">"course"</span>, course);  </span><br><span class="line">        <span class="keyword">return</span> map;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>ctrl上的参数使用@ModelAttribute注解指定，这样就可以实现参数两个实体类，不用再去多写一个dto了<br>当然这种方法也有缺陷，具体参考<a href="https://www.jianshu.com/p/59771cbf373d" target="_blank" rel="noopener">SpringMVC表单多对象传递小技巧——@InitBinder</a></p>
-
-					
-				</div>
-			</div>
-		</article>
-
-		<ul class="am-pagination">
-    
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/10/26/第一次使用hexo搭建博客的记录/" title="第一次使用hexo搭建博客的记录">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
-	
- </ul>
-        
-
-		<div class="theme-annie-comment-button-container">
-	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
-		加载评论
-		<!--加载评论-->
-	</button>
-</div>
-
-<div id="annie-comment-container" class="theme-annie-comment-main-container">
-
-	
-		
-			<!-- comment gitalk -->
-			<!-- show gitalk comment -->
-
-  <div id="gitalk-container"></div>
-
-
-<!-- gitalk`s css & js -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<link rel="stylesheet" href="/css/comment.css">
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<script type="text/javascript">
-	//thanks O-R
-	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
-	//去除尾部匹配正则数组的字符串  
-	//remove redundant characters
-	String.prototype.trimEnd = function(regStr) {
-		var result = this;
-		if(regStr == undefined || regStr == null || regStr == "") {
-			return result;
-		}
-		var array = regStr.split(',');
-
-		if(array.length > 0) {
-
-			var c = array.shift();
-			var str = this;
-			var i = str.length;
-			var rg = new RegExp(c);
-			var matchArr = str.match(rg);
-
-			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
-				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
-					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
-					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
-					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
-					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
-					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
-					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
-					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
-				matchStr = matchStr + '$';
-				result = str.replace(new RegExp(matchStr), "");
-			}
-
-			if(array.length > 0) {
-				return result.trimEnd(array.join())
-			} else {
-				return result;
-			}
-		}
-	};
-
-	//create gitalk
-	var gitalk = new Gitalk({
-		clientID: '5e883d0c002d8cf24dcc',
-		clientSecret: 'dbe7c606c55b0e0dd34ce41f34d8e9d88f20f449',
-		//id: window.location.pathname,
-		// id: (window.location.pathname).split("/").pop().substring(0, 49),
-		id: md5(location.href.trimEnd('#.*$,\\?.*$,index.html$')),
-		repo: 'shenweizheng110.github.io',
-		owner: 'shenweizheng110',
-		admin: 'shenweizheng110',
-		distractionFreeMode: 'true',
-	})
-	gitalk.render('gitalk-container');
-</script>
-		
-	
-
-</div>
-
-<script type="text/javascript">
-	/* Show Comment */
-	var Annie_Comment = function() {
-		function Show_Hidden(obj) {
-			obj.style.display = 'block';
-		}
-		
-		//var obutton = $('#annie-comment-button');
-		//var obutton = $('#annie-comment-container');
-		var obutton = document.getElementById("annie-comment-button" || "0");
-		var odiv = document.getElementById("annie-comment-container");
-		if( 'obutton' ) {
-			obutton.onclick = function() {
-				Show_Hidden(odiv);
-				$("#annie-comment-button").css("display", 'none');
-				return false;
-			}
-		}
-	};
-
-	(function Annie_Init() {
-		Annie_Comment();
-	})();
-</script>
-		
-		<!--
-	时间：2018-09-24
-	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
--->
-
-	
-		<aside class="post-widget">
-			<nav class="post-toc-wrap" id="post-toc">
+					<i class="fa fa-book">HEXO博客</i>
 				
-					<strong>文章目录</strong>
+			</div>  
+
+			
+
+							
 				
 				
-				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-分装成dto"><span class="post-toc-text">1.分装成dto</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-采用-InitBinder注解"><span class="post-toc-text">2.采用@InitBinder注解</span></a></li></ol>
-			</nav>
-			<div class="post-toc-bar"><div>
-		</div></div></aside>
-	
+				
+					
 
+					
+					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
+				
+								
+				
+					  
+					<div class="archive-year">
+						<a href="/archives/2018/10">
+							2018-10
+						</a>
+					</div>				
+				  
+				
+				<div class="archive-item">
+					<div class="archive-post-title">									
+						<a href="/2018/10/27/hexo博客配置/" itemprop="url">hexo博客配置</a>
+					</div>
+					<div class="archive-post-time">
+						<a href="/2018/10/27/hexo博客配置/" itemprop="url">10-27</a>
+					</div>
+				</div>		        							
+			
+				
+			    
+		</div>
 	</div>
 </div>
+
 		</div>
 		</main>
 		
@@ -414,11 +266,6 @@
 	}
 </style>
 
-
-	<script src="/js/motto.js"></script>
-	<script type="text/javascript">
-		$(".motto").html(getMingYanContent());
-	</script>	
 
 
 
@@ -762,8 +609,6 @@
 	<script type="text/javascript" src="/js/love.js"></script>
 
 
-
-	<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript" src="/js/main.js"></script>

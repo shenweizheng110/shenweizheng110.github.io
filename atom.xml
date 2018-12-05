@@ -5,9 +5,9 @@
   <subtitle>记录生活学习中的事迹或bug</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://shenweini.cn/"/>
   <updated>2018-12-03T07:19:47.478Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://shenweini.cn/</id>
   
   <author>
     <name>ShenWeiZheng</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>webpack配置及踩过的那些坑</title>
-    <link href="http://yoursite.com/2018/12/03/webpack%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%B8%A9%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/"/>
-    <id>http://yoursite.com/2018/12/03/webpack配置及踩过的那些坑/</id>
+    <link href="http://shenweini.cn/2018/12/03/webpack%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%B8%A9%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/"/>
+    <id>http://shenweini.cn/2018/12/03/webpack配置及踩过的那些坑/</id>
     <published>2018-12-03T07:19:14.432Z</published>
     <updated>2018-12-03T07:19:47.478Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>腾讯云服务器配置JDK，tomcat解决外网无法访问问题</title>
-    <link href="http://yoursite.com/2018/11/10/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEJDK%EF%BC%8Ctomcat%E8%A7%A3%E5%86%B3%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/</id>
+    <link href="http://shenweini.cn/2018/11/10/%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEJDK%EF%BC%8Ctomcat%E8%A7%A3%E5%86%B3%E5%A4%96%E7%BD%91%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/"/>
+    <id>http://shenweini.cn/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/</id>
     <published>2018-11-10T04:26:52.541Z</published>
     <updated>2018-11-10T04:26:58.895Z</updated>
     
@@ -60,8 +60,8 @@
   
   <entry>
     <title>常用样式汇总</title>
-    <link href="http://yoursite.com/2018/11/01/%E5%B8%B8%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%B1%87%E6%80%BB/"/>
-    <id>http://yoursite.com/2018/11/01/常用样式汇总/</id>
+    <link href="http://shenweini.cn/2018/11/01/%E5%B8%B8%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%B1%87%E6%80%BB/"/>
+    <id>http://shenweini.cn/2018/11/01/常用样式汇总/</id>
     <published>2018-11-01T13:45:17.265Z</published>
     <updated>2018-11-01T13:45:27.416Z</updated>
     
@@ -81,8 +81,8 @@
   
   <entry>
     <title>window.open被拦截解决</title>
-    <link href="http://yoursite.com/2018/10/28/window.open%E8%A2%AB%E6%8B%A6%E6%88%AA/"/>
-    <id>http://yoursite.com/2018/10/28/window.open被拦截/</id>
+    <link href="http://shenweini.cn/2018/10/28/window.open%E8%A2%AB%E6%8B%A6%E6%88%AA/"/>
+    <id>http://shenweini.cn/2018/10/28/window.open被拦截/</id>
     <published>2018-10-28T04:24:31.476Z</published>
     <updated>2018-10-28T04:24:46.586Z</updated>
     
@@ -103,8 +103,8 @@
   
   <entry>
     <title>react应用中mobx未检测到数组的更新</title>
-    <link href="http://yoursite.com/2018/10/28/react%E5%BA%94%E7%94%A8%E4%B8%ADmobx%E6%9C%AA%E6%A3%80%E6%B5%8B%E5%88%B0%E6%95%B0%E7%BB%84%E7%9A%84%E6%9B%B4%E6%96%B0/"/>
-    <id>http://yoursite.com/2018/10/28/react应用中mobx未检测到数组的更新/</id>
+    <link href="http://shenweini.cn/2018/10/28/react%E5%BA%94%E7%94%A8%E4%B8%ADmobx%E6%9C%AA%E6%A3%80%E6%B5%8B%E5%88%B0%E6%95%B0%E7%BB%84%E7%9A%84%E6%9B%B4%E6%96%B0/"/>
+    <id>http://shenweini.cn/2018/10/28/react应用中mobx未检测到数组的更新/</id>
     <published>2018-10-28T03:33:28.314Z</published>
     <updated>2018-10-28T03:33:35.510Z</updated>
     
@@ -124,10 +124,10 @@
   
   <entry>
     <title>hexo博客配置</title>
-    <link href="http://yoursite.com/2018/10/27/hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2018/10/27/hexo博客配置/</id>
+    <link href="http://shenweini.cn/2018/10/27/hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/"/>
+    <id>http://shenweini.cn/2018/10/27/hexo博客配置/</id>
     <published>2018-10-27T09:41:26.428Z</published>
-    <updated>2018-10-27T09:50:53.143Z</updated>
+    <updated>2018-12-05T08:30:21.410Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-网站图标更换"><a href="#1-网站图标更换" class="headerlink" title="1.网站图标更换"></a>1.网站图标更换</h2><p>themes\hexo-theme-Annie\layout_partial\head.ejs<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link <span class="attribute">href</span>=<span class="string">"&lt;%- config.root %&gt;img/favicon.ico"</span> <span class="attribute">rel</span>=<span class="string">"Shortcut Icon"</span> <span class="attribute">type</span>=<span class="string">"image/ico"</span>&gt;</span><br></pre></td></tr></table></figure></p><p>我中间这个hexo-theme-Annie 是我的主题名字，只要路径差不多，找到layout_partial\head.ejs这个文件就对了，把你要换的那个ico文件放在根目录的public\img文件里面就行了，就是你放静态文件的那个目录。</p><h2 id="2-主题更换"><a href="#2-主题更换" class="headerlink" title="2.主题更换"></a>2.主题更换</h2><p>可以去hexo theme的官网找到你想要的主题，<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo-theme</a>选择你喜欢的主题,以我的为例，我选的是Annie<img src="http://static.zybuluo.com/shenweizheng/91gzkw8d7exfxt76rujuznus/TIM%E6%88%AA%E5%9B%BE20181024000407.png" alt="TIM截图20181024000407.png-41.1kB"><br>然后点击这个主题，就可以找到这个主题的博客拥有者，这时候观察浏览器的地址栏的路由，<a href="https://sariay.github.io/" target="_blank" rel="noopener">https://sariay.github.io/</a> github.io前面这个sariay就是博主的github用户名了<br>然后我们主要在进 <a href="https://github.com/博主用户名，这里就是https://github.com/sariay" target="_blank" rel="noopener">https://github.com/博主用户名，这里就是https://github.com/sariay</a> 就可以找到博主的仓库了<br><img src="http://static.zybuluo.com/shenweizheng/lw0roum747u4lwi79scp4o3x/TIM%E6%88%AA%E5%9B%BE20181024000712.png" alt="TIM截图20181024000712.png-207.9kB"><br>这里我们找到我们所选的主题 hexo-theme-Annie 点进去<br><img src="http://static.zybuluo.com/shenweizheng/di0v7n85s3nfxxdjo44my531/TIM%E6%88%AA%E5%9B%BE20181024000819.png" alt="TIM截图20181024000819.png-109.5kB"><br>复制一下网址，然后我们cd进我们的博客文件夹，右击git bash here<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Sariay/hexo-theme-Annie.git themes/hexo-theme-Annie</span><br></pre></td></tr></table></figure></p><p>这样我们就可以吧主题克隆到我们的本地，然后需求修改一下博客的配置文件_config.yml 找到theme字段<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">theme</span>: hexo-<span class="built_in">theme</span>-Annie</span><br></pre></td></tr></table></figure></p><p>修改theme后面的值是我们刚刚克隆下来的主题名，注意克隆下的那个主题文件夹不要去修改他的文件夹的名字，这边配置文件修改完之后，启动下本地服务就会发现主题已经更新好了。</p>]]></content>
     
@@ -140,13 +140,15 @@
     
     </summary>
     
+      <category term="HEXO博客" scheme="http://shenweini.cn/categories/HEXO%E5%8D%9A%E5%AE%A2/"/>
+    
     
   </entry>
   
   <entry>
     <title>第一次使用hexo搭建博客的记录</title>
-    <link href="http://yoursite.com/2018/10/26/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/10/26/第一次使用hexo搭建博客的记录/</id>
+    <link href="http://shenweini.cn/2018/10/26/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
+    <id>http://shenweini.cn/2018/10/26/第一次使用hexo搭建博客的记录/</id>
     <published>2018-10-26T05:12:07.218Z</published>
     <updated>2018-10-27T09:50:46.523Z</updated>
     
@@ -161,15 +163,15 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://shenweini.cn/categories/hexo/"/>
     
     
   </entry>
   
   <entry>
     <title>关于springboot post方法参数为两个实体类的解决办法</title>
-    <link href="http://yoursite.com/2018/10/26/%E5%85%B3%E4%BA%8Espringboot%20post%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-    <id>http://yoursite.com/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/</id>
+    <link href="http://shenweini.cn/2018/10/26/%E5%85%B3%E4%BA%8Espringboot%20post%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://shenweini.cn/2018/10/26/关于springboot post方法参数为两个实体类的解决办法/</id>
     <published>2018-10-26T05:12:07.175Z</published>
     <updated>2018-10-27T09:48:55.500Z</updated>
     
