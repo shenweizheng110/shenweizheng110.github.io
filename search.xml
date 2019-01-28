@@ -3,6 +3,17 @@
   
     
     <entry>
+      <title>Git基本操作</title>
+      <link href="/2019/01/28/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+      <url>/2019/01/28/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-查看分支"><a href="#1-查看分支" class="headerlink" title="1.查看分支"></a>1.查看分支</h2><pre><code>git branch 查看本地分支git branch -a 查看所有分支</code></pre><p><img src="http://static.zybuluo.com/shenweizheng/z2noezmkolv3clrzsv3kr3ys/image_1d29tb0vg1bu35spagp1spr1tqr14.png" alt="image_1d29tb0vg1bu35spagp1spr1tqr14.png-3kB"></p><p>前面带有 * 号的表示当前分支。</p><pre><code>git branch xxx 添加本地分支git branch -d xxx 删除分支git pull 拉取代码git pull origin xxx 拉取远程分支git push xxx 推送本地分支到远程git merge xxx 合并分支</code></pre><h2 id="2-合并分支"><a href="#2-合并分支" class="headerlink" title="2. 合并分支"></a>2. 合并分支</h2><p>当前分支  A  要合并分支B的代码<br>步骤一：将A分支的代码commit<br>步骤二：切换到B分支  <code>git checkout B</code><br>步骤三：拉取远程代码  <code>git pull</code><br>步骤四：切换回A分支 <code>git checkout A</code><br>步骤五：合并B分支代码 <code>git merge B</code></p><h2 id="3-合并部分文件"><a href="#3-合并部分文件" class="headerlink" title="3. 合并部分文件"></a>3. 合并部分文件</h2><p>当前分支 A  要合并分支文件 B 文件路径 /static/src/apps/login/store/loginStore.js<br>步骤一：将A分支commit<br>步骤二：切换B分支 <code>git checkout B</code><br>步骤三：拉取远程代码 <code>git pull</code><br>步骤四：检查有没有未提交的文件，有的话提交</p><pre><code>git statusgit commit -m &apos;&apos;</code></pre><p>步骤五：切换回A分支 <code>git checkout A</code><br>步骤六：cd进药合并的文件所在的文件夹 <code>cd /static/src/apps/login/store</code><br>步骤七：合并指定文件 <code>git merge B loginStore.js</code></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
       <title>webpack配置及踩过的那些坑</title>
       <link href="/2018/12/03/webpack%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%B8%A9%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/"/>
       <url>/2018/12/03/webpack%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%B8%A9%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E5%9D%91/</url>
