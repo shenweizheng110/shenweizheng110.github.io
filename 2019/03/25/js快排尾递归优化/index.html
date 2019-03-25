@@ -11,7 +11,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <title>
-        文章归档: 2019/1
+        js快排尾递归优化
     </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,9 +55,8 @@
 		
 		
 			
-			<!-- && is_current('archives/index.html') -->
-			<p class="page-name">文章归档</p>
-		
+			<p class="page-name">当前文章&nbsp;:&nbsp;《js快排尾递归优化》</p>
+			
 		
 	
 	
@@ -153,50 +152,225 @@
 		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">总计11篇文章</i>
-				
-			</div>  
+		<article class="am-article blog-article-p">
 
-			
+			<div class="am-article-hd">
+				
 
-							
-				
-				
-				
+
+				<h1 class="am-article-title blog-text-center">
 					
+					
+	
+		<a href="/2019/03/25/js快排尾递归优化/" itemprop="url">		
+			js快排尾递归优化		
+		</a>
+	
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2019/03/25/js快排尾递归优化/" itemprop="url">
+	<time datetime="2019-03-25T13:09:34.930Z" itemprop="datePublished">
+  		2019-03-25
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<p>尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。</p>
+<h2 id="常规版本"><a href="#常规版本" class="headerlink" title="常规版本"></a>常规版本</h2><pre><code>function quickSort(arr, left, right) {
+    // 递归跳出条件
+    if (left &gt;= right)
+        return;
+    let i = left,
+        j = right,
+        flag = arr[left]; // 定义的基准
+    while (i &lt; j) {
+        // 找到比flag小的
+        while (i &lt; j &amp;&amp; arr[j] &gt;= flag)
+            j--;
+        // 找到比flag大的
+        while (i &lt; j &amp;&amp; arr[i] &lt;= flag)
+            i++;
+        // 交换i和j
+        if (i &lt;= j) {
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    // 交换基准和i
+    arr[left] = arr[i];
+    arr[i] = flag;
+    // 对左边快排
+    quickSort(arr, left, i - 1);
+    // 对右边快排
+    quickSort(arr, i + 1, right);
+}
+let testArr = [2, 4, 1, 5, 8, 6, 7, 9, 0];
+quickSort(testArr, 0, testArr.length - 1);
+console.log(testArr);
+</code></pre><h2 id="尾递归版本"><a href="#尾递归版本" class="headerlink" title="尾递归版本"></a>尾递归版本</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tailQuickSort</span><span class="params">(arr, left, right)</span> &#123;</span></span><br><span class="line">    let <span class="built_in">i</span> = left,</span><br><span class="line">        <span class="built_in">j</span> = right,</span><br><span class="line">        flag = arr[left];</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">i</span> &lt; <span class="built_in">j</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">i</span> &lt; <span class="built_in">j</span> &amp;&amp; arr[<span class="built_in">j</span>] &gt;= flag)</span><br><span class="line">            <span class="built_in">j</span>--;</span><br><span class="line">        <span class="keyword">while</span> (<span class="built_in">i</span> &lt; <span class="built_in">j</span> &amp;&amp; arr[<span class="built_in">i</span>] &lt;= flag)</span><br><span class="line">            <span class="built_in">i</span>++;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">i</span> &lt; <span class="built_in">j</span>) &#123;</span><br><span class="line">            let temp = arr[<span class="built_in">i</span>];</span><br><span class="line">            arr[<span class="built_in">i</span>] = arr[<span class="built_in">j</span>];</span><br><span class="line">            arr[<span class="built_in">j</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = arr[<span class="built_in">i</span>];</span><br><span class="line">    arr[<span class="built_in">i</span>] = flag;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">i</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span><span class="params">(arr, left, right)</span> &#123;</span></span><br><span class="line">    let pivot = left;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        pivot = tailQuickSort(arr, left, right);</span><br><span class="line">        quickSort(arr, left, pivot - <span class="number">1</span>);</span><br><span class="line">        left = pivot + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let testArray = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">4</span>];</span><br><span class="line">quickSort(testArray, <span class="number">0</span>, testArray.<span class="built_in">length</span> - <span class="number">1</span>);</span><br><span class="line">console.<span class="built_in">log</span>(testArray);</span><br></pre></td></tr></table></figure>
 
 					
-					<!--<a href="/archives/2019" class="archive-year">2019</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2019/01">
-							2019-01
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2019/01/28/Git基本操作/" itemprop="url">Git基本操作</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2019/01/28/Git基本操作/" itemprop="url">01-28</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2019/03/25/19年校招前端面经（阿里-小米-字节跳动）/" title="19年前端校招面经">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
 </div>
 
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment gitalk -->
+			<!-- show gitalk comment -->
+
+  <div id="gitalk-container"></div>
+
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//create gitalk
+	var gitalk = new Gitalk({
+		clientID: '0174f090ce6e4ee38758',
+		clientSecret: 'e0daec6ea9c5ab7f242ee7a1b1578949fc5484ee',
+		//id: window.location.pathname,
+		// id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: md5(location.href.trimEnd('#.*$,\\?.*$,index.html$')),
+		repo: 'shenweizheng110.github.io',
+		owner: 'shenweizheng110',
+		admin: 'shenweizheng110',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常规版本"><span class="post-toc-text">常规版本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尾递归版本"><span class="post-toc-text">尾递归版本</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
+	
+
+	</div>
+</div>
 		</div>
 		</main>
 		
@@ -268,6 +442,11 @@
 	}
 </style>
 
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
 
 
 
@@ -611,6 +790,8 @@
 	<script type="text/javascript" src="/js/love.js"></script>
 
 
+
+	<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript" src="/js/main.js"></script>
