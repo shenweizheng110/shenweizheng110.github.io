@@ -62,7 +62,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		7/25/2019 
+		7/27/2019 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -153,6 +153,136 @@
 	<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed">
     <div class="am-u-md-12 am-u-sm-12">
+        
+        <article class="am-g blog-entry-article">
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                <img src="/img/17.jpg" class="am-u-sm-12">
+            </div>
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <span class="theme-annie-post-date">
+        						<a href="/2019/07/26/原型链 与 继承的理解/" itemprop="url">
+	<time datetime="2019-07-26T12:47:05.904Z" itemprop="datePublished">
+  		2019-07-26
+  </time>
+</a>    
+
+        					</span>
+                <span class="theme-annie-post-title">
+        						
+	
+		<a href="/2019/07/26/原型链 与 继承的理解/" itemprop="url">		
+			原型链 与 继承的理解		
+		</a>
+	
+
+        					</span>
+                
+                <p>
+                    
+                    
+原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。
+
+new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想
+构造函数在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。
+                    
+                </p>
+                
+                
+                <span class="continue-read">
+        							<a href="/2019/07/26/原型链 与 继承的理解/" class="pull-right">
+        								展开全文
+        							</a>		
+        						</span>
+                
+            </div>
+        </article>
+        
+        <article class="am-g blog-entry-article">
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                <img src="/img/16.jpg" class="am-u-sm-12">
+            </div>
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <span class="theme-annie-post-date">
+        						<a href="/2019/07/26/js 微任务 宏任务的执行顺序解释/" itemprop="url">
+	<time datetime="2019-07-26T01:19:57.075Z" itemprop="datePublished">
+  		2019-07-26
+  </time>
+</a>    
+
+        					</span>
+                <span class="theme-annie-post-title">
+        						
+	
+		<a href="/2019/07/26/js 微任务 宏任务的执行顺序解释/" itemprop="url">		
+			js 微任务 宏任务		
+		</a>
+	
+
+        					</span>
+                
+                <p>
+                    
+                    
+js 是单线程执行的，js中的任务按顺序一个一个的执行，但是一个任务耗时太长，那么后面的任务就需要等待，为了解决这种情况，将任务分为了同步任务和异步任务，而异步任务又可以分为微任务和宏任务。
+
+首先第一段示例代码12345678910111213console.log('script start');setTimeout(function() &#123;  console.log('setTi
+                    
+                </p>
+                
+                
+                <span class="continue-read">
+        							<a href="/2019/07/26/js 微任务 宏任务的执行顺序解释/" class="pull-right">
+        								展开全文
+        							</a>		
+        						</span>
+                
+            </div>
+        </article>
+        
+        <article class="am-g blog-entry-article">
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                <img src="/img/15.jpg" class="am-u-sm-12">
+            </div>
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <span class="theme-annie-post-date">
+        						<a href="/2019/07/25/对 js 中 this 指向的理解/" itemprop="url">
+	<time datetime="2019-07-25T14:11:00.364Z" itemprop="datePublished">
+  		2019-07-25
+  </time>
+</a>    
+
+        					</span>
+                <span class="theme-annie-post-title">
+        						
+	
+		<a href="/2019/07/25/对 js 中 this 指向的理解/" itemprop="url">		
+			对 js 中的this 的理解		
+		</a>
+	
+
+        					</span>
+                
+                <p>
+                    
+                    
+this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论
+
+纯粹的函数调用
+这是函数通常的用法，属于全局性的调用，所以this指向全局。
+
+最简单的示例12345var x = 1;function test() &#123;   console.log(this.x);&#125;test();
+                    
+                </p>
+                
+                
+                <span class="continue-read">
+        							<a href="/2019/07/25/对 js 中 this 指向的理解/" class="pull-right">
+        								展开全文
+        							</a>		
+        						</span>
+                
+            </div>
+        </article>
         
         <article class="am-g blog-entry-article">
             <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
@@ -447,128 +577,6 @@ git merge xxx 合并分支
                 
                 <span class="continue-read">
         							<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" class="pull-right">
-        								展开全文
-        							</a>		
-        						</span>
-                
-            </div>
-        </article>
-        
-        <article class="am-g blog-entry-article">
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                <img src="/img/6.jpg" class="am-u-sm-12">
-            </div>
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                <span class="theme-annie-post-date">
-        						<a href="/2018/11/01/常用样式汇总/" itemprop="url">
-	<time datetime="2018-11-01T13:45:27.000Z" itemprop="datePublished">
-  		2018-11-01
-  </time>
-</a>    
-
-        					</span>
-                <span class="theme-annie-post-title">
-        						
-	
-		<a href="/2018/11/01/常用样式汇总/" itemprop="url">		
-			常用样式汇总		
-		</a>
-	
-
-        					</span>
-                
-                <p>
-                    
-                    1.小手样式1cursor: pointer
-2.垂直居中使用flex布局123&lt;div class="outer"&gt;    &lt;div class="inner"&gt;&lt;/div&gt;&lt;/div&gt;
-1234567891011121314.outer &#123;    width: 300px;    height: 300px;    border: 1p
-                    
-                </p>
-                
-                
-                <span class="continue-read">
-        							<a href="/2018/11/01/常用样式汇总/" class="pull-right">
-        								展开全文
-        							</a>		
-        						</span>
-                
-            </div>
-        </article>
-        
-        <article class="am-g blog-entry-article">
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                <img src="/img/4.jpg" class="am-u-sm-12">
-            </div>
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                <span class="theme-annie-post-date">
-        						<a href="/2018/10/28/window.open被拦截/" itemprop="url">
-	<time datetime="2018-10-28T04:24:46.000Z" itemprop="datePublished">
-  		2018-10-28
-  </time>
-</a>    
-
-        					</span>
-                <span class="theme-annie-post-title">
-        						
-	
-		<a href="/2018/10/28/window.open被拦截/" itemprop="url">		
-			window.open被拦截解决		
-		</a>
-	
-
-        					</span>
-                
-                <p>
-                    
-                    项目开发中遇到window.open写在回调里被浏览器拦截.解决办法是在请求时新开一个tab页，然后再请求的回调里修改这个tab页的地址.
-12345678910let newWindow = window.open('about:blank'); //  新开一个tab页返回一个window对象axios.post(url&#125;)    .then(response=&gt;&#123; 
-                    
-                </p>
-                
-                
-                <span class="continue-read">
-        							<a href="/2018/10/28/window.open被拦截/" class="pull-right">
-        								展开全文
-        							</a>		
-        						</span>
-                
-            </div>
-        </article>
-        
-        <article class="am-g blog-entry-article">
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                <img src="/img/5.jpg" class="am-u-sm-12">
-            </div>
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                <span class="theme-annie-post-date">
-        						<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" itemprop="url">
-	<time datetime="2018-10-28T03:33:35.000Z" itemprop="datePublished">
-  		2018-10-28
-  </time>
-</a>    
-
-        					</span>
-                <span class="theme-annie-post-title">
-        						
-	
-		<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" itemprop="url">		
-			react应用中mobx未检测到数组的更新		
-		</a>
-	
-
-        					</span>
-                
-                <p>
-                    
-                    在mobx中定义一个可观察的数组123class Store&#123;    @observable testArray = [];&#125;
-在组件里面引用这个store123testArray.map(item=&gt;(    &lt;span&gt;&#123;item&#125;&lt;/span&gt;))
-这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规
-                    
-                </p>
-                
-                
-                <span class="continue-read">
-        							<a href="/2018/10/28/react应用中mobx未检测到数组的更新/" class="pull-right">
         								展开全文
         							</a>		
         						</span>

@@ -11,7 +11,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <title>
-        腾讯云服务器配置JDK，tomcat解决外网无法访问问题
+        原型链 与 继承的理解
     </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《腾讯云服务器配置JDK，tomcat解决外网无法访问问题》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《原型链 与 继承的理解》</p>
 			
 		
 	
@@ -163,8 +163,8 @@
 					
 					
 	
-		<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" itemprop="url">		
-			腾讯云服务器配置JDK，tomcat解决外网无法访问问题		
+		<a href="/2019/07/26/原型链 与 继承的理解/" itemprop="url">		
+			原型链 与 继承的理解		
 		</a>
 	
 
@@ -173,9 +173,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/" itemprop="url">
-	<time datetime="2018-11-10T04:26:58.000Z" itemprop="datePublished">
-  		2018-11-10
+						<a href="/2019/07/26/原型链 与 继承的理解/" itemprop="url">
+	<time datetime="2019-07-26T12:47:05.904Z" itemprop="datePublished">
+  		2019-07-26
   </time>
 </a>    
 &nbsp;
@@ -190,38 +190,47 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接下来改了tomcat的配置终于成功，记录一下。<br>我用的是腾讯云的学生服务器，操作系统是CentOS7.2 64位 JDK版本是1.8.0 tomcat版本是8.5.34<br>准备一下XShell工具，我是使用的XShell。还有一个WinScp工具用来上传文件，当然也可以使用命令，但是我感觉有点慢，不懂是不是错觉。</p>
-<h2 id="1-配置JDK"><a href="#1-配置JDK" class="headerlink" title="1.配置JDK"></a>1.配置JDK</h2><p>网上看到了很多配置jdk的方法，相对而言，配置一下jdk还是很简单。我是使用的直接解压linux版本的jdk文件然后配置下环境变量，当然也有的是直接使用yum安装jdk。那么我们首先去<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk官网</a>下载一下jdk<br><img src="http://static.zybuluo.com/shenweizheng/d6as8u57y5cwx0zklb2l8ubg/image_1crsc1nek1797gbtv7i1rfvpiv9.png" alt="image_1crsc1nek1797gbtv7i1rfvpiv9.png-103.2kB"></p>
-<p>这边我们用的是后缀为.tar.gz的，这是linux版本的<br>使用我们的WinScp工具把我们刚刚的下载的jdk上传至我们的服务器。用XShell登录进服务器，这边有一个问题就是我看到有的博客是说一开始进去的时候不是root用户但是我这边是进去就是root用户。下面的所有的配置我们都是要在root用户下进行的。<br><img src="http://static.zybuluo.com/shenweizheng/dpu4hunouaswrrmozaq12750/image_1crscssno10vipt7m0e37m1rfd13.png" alt="image_1crscssno10vipt7m0e37m1rfd13.png-21.9kB"></p>
-<p>如果你不是root用户而是ubuntu用户那么<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo su</span></span><br></pre></td></tr></table></figure></p>
-<p>切换进root用户，当然我没有遇到这个问题。<br><img src="http://static.zybuluo.com/shenweizheng/jewd66ybvwimbvixxk3lxl4f/image_1crtp2a1sb8t10vtdsd1475dgs9.png" alt="image_1crtp2a1sb8t10vtdsd1475dgs9.png-25.8kB"><br>ls一下查看现在的根目录，解压jdk</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-<span class="number">8</span>u191-linux-x64<span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br></pre></td></tr></table></figure>
-<p>ls查看一下解压成功</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/r5nqg0utk1vumr6jqro13xkp/image_1crtp97csdms3kc15pv10c01jkr16.png" alt="image_1crtp97csdms3kc15pv10c01jkr16.png-7.4kB"></p>
-<p>接下来在/usr下面创建一下文件夹叫java</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/o3c26xka6jvyiwo7nesvgiv9/image_1crtpt60a3271k911pcd1c4boqf1j.png" alt="image_1crtpt60a3271k911pcd1c4boqf1j.png-10.8kB"></p>
-<p>接下来把我们解压好的jdk放到上一步创建的文件夹下面</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/9qxwwuaubcriiuqy62j7jg38/image_1crtq214a1r2lav3t7svm8144c20.png" alt="image_1crtq214a1r2lav3t7svm8144c20.png-5kB"></p>
-<p>下面就是配置jdk的环境变量，我们需要修改 /etc/profile文件</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/hretoz8xtgh5byccpiydt2fj/image_1crtq922b1kt1jmb15ri16on5sb2d.png" alt="image_1crtq922b1kt1jmb15ri16on5sb2d.png-2.7kB"></p>
-<p>配置一下JAVA_HOME CLASSPATH PATH<br><img src="http://static.zybuluo.com/shenweizheng/gogfsd3z7zlxc8zjcvfk8gfy/image_1crtqakkmm3s1a6103c1duq1be2q.png" alt="image_1crtqakkmm3s1a6103c1duq1be2q.png-75.5kB"></p>
-<p>按esc之后 :wq 保存退出编辑，不得不说linux命令还是要会的，多多少少会用到linux的东西<br>使用source命令使我们刚刚做的修改生效，使用java -version检查我们的配置是否正确<br><img src="http://static.zybuluo.com/shenweizheng/wx9rjeszrp6a80sx5x2lnffr/image_1crtqesme1pmnldm1ltm12u71uq737.png" alt="image_1crtqesme1pmnldm1ltm12u71uq737.png-15.3kB"></p>
-<p>到此为止jdk的配置已经做完了，下面就是tomcat的配置，也是本章的重点，拿笔开始记笔记了。</p>
-<h2 id="2-Tomcat配置以及外网无法访问问题"><a href="#2-Tomcat配置以及外网无法访问问题" class="headerlink" title="2.Tomcat配置以及外网无法访问问题"></a>2.Tomcat配置以及外网无法访问问题</h2><p>首先第一步我们得去下一个tomcat和jdk一样，这边给一个传送门<a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">tomcat8.5</a><br><img src="http://static.zybuluo.com/shenweizheng/7i5yo5ja413q6abv4oflxlg8/image_1crtqmg8s4ap1joo1ls219a2140k3k.png" alt="image_1crtqmg8s4ap1joo1ls219a2140k3k.png-93.4kB"></p>
-<p>老样子还是下.tar.gz的，接下来上传tomcat，解压tomcat，将解压好的文件夹移至我们的/usr/java文件夹下面，当然你也可以重新建一个，这都是小事。</p>
-<p>我们进入java文件夹，ls一下现在是有两个文件夹，一个是我们上面的jdk另一个是刚刚的tomcat</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/1jujj0042crmuqpr3nhq01he/image_1crtqu1pvaag1fcn4ld123vpdl41.png" alt="image_1crtqu1pvaag1fcn4ld123vpdl41.png-9.4kB"></p>
-<p>那么下面就是tomcat的问题，首先我们去修改一下tomcat的端口号，默认是8080我们这边修改成80。修改conf/server.xml文件</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/m481dibr6w5yrraphxtm425r/image_1crtr550hecc8krk3e1spm18e14e.png" alt="image_1crtr550hecc8krk3e1spm18e14e.png-87.4kB"></p>
-<p>接下来就是启动我们的tomcat先看一下能不能访问。启动程序和关闭程序在 bin目录下有一个startup.sh 和shutdown.sh<br><img src="http://static.zybuluo.com/shenweizheng/wfhcb1ul4humux1pedea0xuo/image_1crtr8o56c35t577c01j8n1e3d4r.png" alt="image_1crtr8o56c35t577c01j8n1e3d4r.png-23.9kB"></p>
-<p>如果这一步遇到 -bash: startup.sh not command这种报错时<br><img src="http://static.zybuluo.com/shenweizheng/kmv88x25dvqaps4h54xmgps2/image_1crtrcipe1nla1bfd1honj199j458.png" alt="image_1crtrcipe1nla1bfd1honj199j458.png-3.3kB"></p>
-<p>然后再执行startup.sh文件，这样就可以了。<br>那么我们这边开启了tomcat，使用外网ip加端口号访问一下看看情况。<br>如果你不能访问，首先配置一下云服务器的安全组，这边我们直接默认全部端口都放通，当然你也可以自定义配置一下规则。<br><img src="http://static.zybuluo.com/shenweizheng/5fo9j5yft5genj37nn2kuume/image_1crtrkq1k1d56sa6i1l18vf97t5l.png" alt="image_1crtrkq1k1d56sa6i1l18vf97t5l.png-134.3kB"></p>
-<p>接下来重启一下服务器，不知道要不要重启，反正我是重启了一下。之后再去访问一下80端口，看能不能出现tomcat的主页，如果还是不行，那么接下去我们继续配置，这边安全组是已经都开启了，接下来我们查看80端口有没有开启。<br><img src="http://static.zybuluo.com/shenweizheng/ajfaio341tmx3l9idey0ylsq/image_1crtrscii1ls21anrl9417411oq762.png" alt="image_1crtrscii1ls21anrl9417411oq762.png-20.2kB"></p>
-<p>我这边是已经配置好了的，所以80端口是开启的，如果你的80端口没有开启，那么下面我们去搞一下防火墙。<br>首先我们查看一下防火墙的状态<br><img src="http://static.zybuluo.com/shenweizheng/xnj3z2ymgshz32aylpes248g/image_1crts1red1bu81bfd50d4q1dio6f.png" alt="image_1crts1red1bu81bfd50d4q1dio6f.png-14.5kB"></p>
-<p>发现现在防火墙是关闭的，这边我们先开启一下防火墙，不然待会出现filreWalld not runnuind的错<br><img src="http://static.zybuluo.com/shenweizheng/xs7nmzqmlgvdzwi1anzg7cvf/image_1crtsqrhpmbqirf1n2g17p0n2s6s.png" alt="image_1crtsqrhpmbqirf1n2g17p0n2s6s.png-10.2kB"></p>
-<p>这边配置好了之后，我们在吧防火墙关闭一下<br><code>systemctl stop firewalld</code>，我们进入tomcat的bin目录下重启一下服务器。<br><img src="http://static.zybuluo.com/shenweizheng/objwn9diivl04baejjzuw4ru/image_1crtssq284be17641u821v391dgc79.png" alt="image_1crtssq284be17641u821v391dgc79.png-83.6kB"></p>
-<p>如果你在关闭的时候遇到Neither the JAVA_HOME nor the JRE_HOME environment variable is defined这个报错的时候，使用vim修改一下bin目录下的setclasspath.sh，手动添加JAVA_HOME和JRE_HOME两个环境变量。<br><img src="http://static.zybuluo.com/shenweizheng/i7us0bl35qtytmr8ie00rchh/image_1crtt3g1d1lno1552p601sr325f83.png" alt="image_1crtt3g1d1lno1552p601sr325f83.png-269.3kB"></p>
-<p>关闭之后，在启动一下tomcat，打开浏览器，访问公网ip访问，出现tomcat主页。如果还是没有出现的话，就无能为力了。</p>
+						<blockquote>
+<p>原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。</p>
+</blockquote>
+<h2 id="new-的由来"><a href="#new-的由来" class="headerlink" title="new 的由来"></a>new 的由来</h2><p>关于new的由来大家可以借阅阮一峰老师的博客<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">Javascript继承机制的设计思想</a></p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。<br>构造函数和普通的function最直观的区别是 构造函数的函数名是大写的，它张这个样子<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'dog'</span>;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这边是定义了一个 Dog 的构造函数，那么我们可以使用 new 来创建一只狗</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dog = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dog.name); <span class="comment">// 哈士奇</span></span><br></pre></td></tr></table></figure>
+<p>至于构造函数中的this指向问题，这边就不说了，在我的上一篇博客详细的介绍了<a href="https://blog.csdn.net/qq_38606793/article/details/97309053" target="_blank" rel="noopener">js中的this指向问题</a>。</p>
+<p>下面我们了解一下 new 一个对象的中间发生了什么</p>
+<h2 id="new-的过程"><a href="#new-的过程" class="headerlink" title="new 的过程"></a>new 的过程</h2><p>节选自js高级程序设计（第三版），创建一个实例，一共分为四个步骤</p>
+<p>（1）创建一个新对象；</p>
+<p>（2）将构造函数的作用域赋给新对象（因此this就指向了这个新对象）；</p>
+<p>（3）执行构造函数中的代码（为这个新对象添加属性）；</p>
+<p>（4）返回新对象。</p>
+<h2 id="new-的缺点"><a href="#new-的缺点" class="headerlink" title="new 的缺点"></a>new 的缺点</h2><p>前面提到了 new 运算符可以实例化一个对象，但是 new 也有一个缺点，就是new出来的两个对象之间没有任何的联系，做不到数据共享，这个缺点有违 new 创建的初衷。下面看一段示例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'dog'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dogA = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="keyword">let</span> dogB = <span class="keyword">new</span> Dog(<span class="string">'大金毛'</span>);</span><br><span class="line"></span><br><span class="line">dogA.type = <span class="string">'大型犬'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(dogB.type); <span class="comment">// 'dog'</span></span><br></pre></td></tr></table></figure></p>
+<p>通过 Dog 构造函数实例化出了两个对象，修改其中一个对象的属性，并不会改变另一个对象的属性，这并不是 new 设计的初衷， dogA 和 dogB 两个对象之间无法做到数据共享，就好像没有任何关系一样。</p>
+<h2 id="prototype-的引入"><a href="#prototype-的引入" class="headerlink" title="prototype 的引入"></a>prototype 的引入</h2><p>为了解决上面所述的问题，new 的创始人引入了 prototype 属性，</p>
+<blockquote>
+<p>这个属性包含一个对象（以下简称”prototype对象”），所有实例对象需要共享的属性和方法，都放在这个对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
+</blockquote>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Dog(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Dog.prototype.<span class="keyword">type</span> = <span class="string">'dog'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dogA = <span class="literal">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="keyword">let</span> dogB = <span class="literal">new</span> Dog(<span class="string">'大金毛'</span>);</span><br><span class="line"></span><br><span class="line">console.<span class="keyword">log</span>(dogA.<span class="keyword">type</span>); <span class="comment">// dog</span></span><br><span class="line">Dog.prototype.<span class="keyword">type</span> = <span class="string">'大型犬'</span>;</span><br><span class="line">console.<span class="keyword">log</span>(dogA.<span class="keyword">type</span>, dogB.<span class="keyword">type</span>); <span class="comment">//大型犬 大型犬</span></span><br></pre></td></tr></table></figure>
+<p>type属性是 Dog实例化出的对象所共享的属性，只要修改了 prototype中的type属性，每一个对象的 type 值都会被改变。</p>
+<h2 id="构造函数实现继承"><a href="#构造函数实现继承" class="headerlink" title="构造函数实现继承"></a>构造函数实现继承</h2><p>构造函数实现继承有很多中实现方式，首先看第一种</p>
+<h3 id="call-apply-绑定"><a href="#call-apply-绑定" class="headerlink" title="call apply 绑定"></a>call apply 绑定</h3><p>这种是直接将父构造函数绑定在子构造函数中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'dog'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    Animal.call(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dogA = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dogA.type); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用prototype进行继承"><a href="#使用prototype进行继承" class="headerlink" title="使用prototype进行继承"></a>使用prototype进行继承</h3><p>由于 prototype 属性可以存在对象共享的属性，那么我们可以按照封装的思想，将公共的部分抽离出来，变成一个公共的构造函数，也就是这些对象的父类也是基类，我觉得叫基类更加的合适，因为它存储着每一个对象的公共部分。实现方式只需要将子构造函数的 prototype 属性赋值为父构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'dog'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Dog.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Dog.prototype.constructor = Dog;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dogA = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dogA.type); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>第 9 行：将Dog 的原型属性赋值为Animal的实例</li>
+<li>第 10 行：修改 prototype 属性的costructor对象为Dog，这是因为每一个 prototype 对象都包含了它的构造函数对象，在上一行将 Dog 的原型直接赋值为 Animal的构造函数，所以此时Dog的原型对象中的 constructor其实是指向Animal的构造函数的，所以我们这边要修改回来，不然引起原型链的絮乱。</li>
+</ul>
+<h3 id="直接继承prototype"><a href="#直接继承prototype" class="headerlink" title="直接继承prototype"></a>直接继承prototype</h3><blockquote>
+<p>第三种方法是对第二种方法的改进。由于Animal对象中，不变的属性都可以直接写入Animal.prototype。所以，我们也可以让Cat()跳过 Animal()，直接继承Animal.prototype。</p>
+</blockquote>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span><span class="params">()</span><span class="comment">&#123; &#125;</span>;</span></span><br><span class="line">Animal.prototype.<span class="keyword">type</span> = <span class="string">'dog'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span><span class="params">(<span class="keyword">name</span>)</span><span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    this.name = name;</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">Dog</span>.<span class="title">prototype</span> = <span class="title">Animal</span>.<span class="title">prototype</span>;</span></span><br><span class="line">Dog.prototype.<span class="keyword">constructor</span> = Dog;</span><br><span class="line"></span><br><span class="line">let dogA = new Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line">console.log(dogA.<span class="keyword">type</span>); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
+<p>这种方法相比于第二种方法，优点是效率高，因为他跳过了执行创建一个 Animal 实例，省内存。但是也有缺点，缺点是直接将 Animal 的prototype 属性赋值给了 Dog 的 prototype 这是一个浅拷贝，因为prototype 是一个 object，所以对于任何Dog 的 prototype的修改都会响应在 Animal.prototype；</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log<span class="params">(Animal.prototype.<span class="attr">constructor</span> === Dog)</span>; <span class="string">//</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>我们在第 9 行修改了Dog.prototype中的 constructor属性，这边打印发现 Animal 的 prototype中的 constructor 也指向了 Dog</p>
+<h3 id="利用空对象作为中介"><a href="#利用空对象作为中介" class="headerlink" title="利用空对象作为中介"></a>利用空对象作为中介</h3><p>为了解决上面一种方式引起的问题，可以采用空对象作为媒介。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123; &#125;;</span><br><span class="line">Animal.prototype.type = <span class="string">'dog'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Temp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; &#125;;</span><br><span class="line">Temp.prototype = Animal.prototype;</span><br><span class="line">Dog.prototype = <span class="keyword">new</span> Temp();</span><br><span class="line">Dog.prototype.constructor = Dog;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dogA = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dogA.type); <span class="comment">// dog</span></span><br><span class="line"><span class="built_in">console</span>.log(Animal.prototype.constructor === Dog); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<p>利用空对象作为媒介，空对象几乎不占内存，也不会影响 Animal 的 prototype</p>
+<h3 id="拷贝继承"><a href="#拷贝继承" class="headerlink" title="拷贝继承"></a>拷贝继承</h3><p>顾名思义，就是将父对象的所有属性和方法，拷贝进子对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123; &#125;;</span><br><span class="line">Animal.prototype.type = <span class="string">'dog'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendOfCopy</span>(<span class="params">Child, Parent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> c = Child.prototype;</span><br><span class="line">    <span class="keyword">let</span> p = Parent.prototype;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        c[i] = p[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extendOfCopy(Dog, Animal);</span><br><span class="line"><span class="keyword">let</span> dogA = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dogA.type); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
 
 					
 				</div>
@@ -230,15 +239,9 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/12/03/webpack配置及踩过的那些坑/" title="webpack配置及踩过的那些坑">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/11/01/常用样式汇总/" title="常用样式汇总">
+		<a class="pull-right" href="/2019/07/26/js 微任务 宏任务的执行顺序解释/" title="js 微任务 宏任务">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -367,7 +370,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-配置JDK"><span class="post-toc-text">1.配置JDK</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Tomcat配置以及外网无法访问问题"><span class="post-toc-text">2.Tomcat配置以及外网无法访问问题</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#new-的由来"><span class="post-toc-text">new 的由来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造函数"><span class="post-toc-text">构造函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#new-的过程"><span class="post-toc-text">new 的过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#new-的缺点"><span class="post-toc-text">new 的缺点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prototype-的引入"><span class="post-toc-text">prototype 的引入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造函数实现继承"><span class="post-toc-text">构造函数实现继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#call-apply-绑定"><span class="post-toc-text">call apply 绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用prototype进行继承"><span class="post-toc-text">使用prototype进行继承</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接继承prototype"><span class="post-toc-text">直接继承prototype</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#利用空对象作为中介"><span class="post-toc-text">利用空对象作为中介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拷贝继承"><span class="post-toc-text">拷贝继承</span></a></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
