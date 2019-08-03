@@ -6,19 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://shenweini.cn">
-  <title>Archives: 2019/3 | 唯你の博客</title>
+  <title>BFC的触发条件、布局规则、使用场景 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言">
+  <meta name="description" content="BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC  BFC 的触发条件 html根元素 &amp;lt;html&amp;gt; float 不为 none 绝对定位元素 也就是 position 为 absolute 和 fixed 行内快元素 display 为 inline-block display 为 table-c">
 <meta name="keywords" content="唯你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="唯你の博客">
-<meta property="og:url" content="http://shenweini.cn/archives/2019/03/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BFC的触发条件、布局规则、使用场景">
+<meta property="og:url" content="http://shenweini.cn/2019/07/31/BFC的触发条件、布局规则、使用场景/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta property="og:description" content="BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC  BFC 的触发条件 html根元素 &amp;lt;html&amp;gt; float 不为 none 绝对定位元素 也就是 position 为 absolute 和 fixed 行内快元素 display 为 inline-block display 为 table-c">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/ht4jg65uch1aetpqj3qss3bx/image_1dh2ouhd51bsjc015lseft7nnm.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/q6ic9t4n3v75zghzybkz2jv0/image_1dh2p3qqkk1g1c2dasi6tb1cbn13.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/1t50d2gchk4f9pm9o8l1yv1p/image_1dh2p80er1035cd61n5611r9q1v1g.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/2ss8m8qjet3nrlpkik471lfx/image_1dh2ped1p1r5s10ehbnf1a388071t.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/6p2jtzzqff03j50aornozxos/image_1dh2pth9oj4p9412k11kro1tn02a.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/9fug72v07c84wmoc0xgmbfz0/image_1dh2qc0vdmsu698slaa112dn3k.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/7pxxvy6tkz4ov0ku7jtqd55p/image_1dh2qhk4l1guf1koqjbokt41ne74e.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/jpwg0iwwcwuqncwygfiycsuz/image_1dh2qgtdi1nvsf2b19uo11ej19q541.png">
+<meta property="og:updated_time" content="2019-07-31T01:36:51.240Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="唯你の博客">
-<meta name="twitter:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta name="twitter:title" content="BFC的触发条件、布局规则、使用场景">
+<meta name="twitter:description" content="BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC  BFC 的触发条件 html根元素 &amp;lt;html&amp;gt; float 不为 none 绝对定位元素 也就是 position 为 absolute 和 fixed 行内快元素 display 为 inline-block display 为 table-c">
+<meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/ht4jg65uch1aetpqj3qss3bx/image_1dh2ouhd51bsjc015lseft7nnm.png">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -152,76 +162,155 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-BFC的触发条件、布局规则、使用场景" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/js快排尾递归优化/" class="archive-article-date">
-  	<time datetime="2019-03-25T13:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/js快排尾递归优化/">js快排尾递归优化</a>
+    <h1 class="article-title" itemprop="name">
+      BFC的触发条件、布局规则、使用场景
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/19年校招前端面经（阿里-小米-字节跳动）/" class="archive-article-date">
-  	<time datetime="2019-03-25T12:47:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+        
+        <a href="/2019/07/31/BFC的触发条件、布局规则、使用场景/" class="archive-article-date">
+  	<time datetime="2019-07-31T01:36:51.240Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/19年校招前端面经（阿里-小米-字节跳动）/">19年前端校招面经</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC</p>
+</blockquote>
+<h2 id="BFC-的触发条件"><a href="#BFC-的触发条件" class="headerlink" title="BFC 的触发条件"></a>BFC 的触发条件</h2><ul>
+<li>html根元素 <code>&lt;html&gt;</code></li>
+<li>float 不为 none</li>
+<li>绝对定位元素 也就是 position 为 absolute 和 fixed</li>
+<li>行内快元素 display 为 inline-block</li>
+<li>display 为 table-cell inline-block flex inline-flex grid inline-grid table-caption(表格标题)</li>
+<li>overflow 不为 visible</li>
+</ul>
+<h2 id="BFC-的规则"><a href="#BFC-的规则" class="headerlink" title="BFC 的规则"></a>BFC 的规则</h2><ol>
+<li>内部的Box会在垂直方向，一个接一个地放置。Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</li>
+<li>每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+<li>BFC的区域不会与float box重叠。</li>
+<li>FC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算BFC的高度时，浮动元素也参与计算。</li>
+</ol>
+<h2 id="BFC解决的问题"><a href="#BFC解决的问题" class="headerlink" title="BFC解决的问题"></a>BFC解决的问题</h2><h3 id="垂直方向-margin-重叠"><a href="#垂直方向-margin-重叠" class="headerlink" title="垂直方向 margin 重叠"></a>垂直方向 margin 重叠</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.out&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">'out'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">'out'</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>理论上讲，这两个 div 上下间隙有 40px 因为两个div 的margin都是 20px 加起来就是40px，但是看一下效果图。</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/ht4jg65uch1aetpqj3qss3bx/image_1dh2ouhd51bsjc015lseft7nnm.png" alt="image_1dh2ouhd51bsjc015lseft7nnm.png-2.1kB"></p>
+<p>这个实际上，只有 20px 的间隙，原因是一个容器内部的所有box会从上往下进行堆叠，并且垂直相邻的距离(即margin)是由各自的margin决定的，在垂直方向上会发生 margin 重叠。解决方案是将两个 div 分属于不同的BFC。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>='out'&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;<span class="keyword">div</span> style=<span class="string">"overflow: hidden"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>='out'&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>在其中一个out外面包裹一层div，设置 overflow: hidden 使其变成一个BFC，这样两个out就不会发生margin重叠了。</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/q6ic9t4n3v75zghzybkz2jv0/image_1dh2p3qqkk1g1c2dasi6tb1cbn13.png" alt="image_1dh2p3qqkk1g1c2dasi6tb1cbn13.png-2.8kB"></p>
+<p>在看另一外一种margin重叠</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.out&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.inner&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">'out'</span>&gt;</span><br><span class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"inner"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/1t50d2gchk4f9pm9o8l1yv1p/image_1dh2p80er1035cd61n5611r9q1v1g.png" alt="image_1dh2p80er1035cd61n5611r9q1v1g.png-6.1kB"></p>
+<p>可以看出，整个元素距离顶部的距离是由子元素 inner 的margin-top决定的，因为 inner 的marginTop是大于外部的out的，并且他们都属于 html 跟元素下的BFC，所以margin在垂直方向上会发生重叠，取最大值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.out</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: black;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>给 out 设置 overflow: hidden 让他变成一个 BFC</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/2ss8m8qjet3nrlpkik471lfx/image_1dh2ped1p1r5s10ehbnf1a388071t.png" alt="image_1dh2ped1p1r5s10ehbnf1a388071t.png-1.5kB"></p>
+<h3 id="文本不环绕浮动元素"><a href="#文本不环绕浮动元素" class="headerlink" title="文本不环绕浮动元素"></a>文本不环绕浮动元素</h3><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.<span class="built_in">float</span>&#123;</span><br><span class="line">    <span class="built_in">float</span>: left;</span><br><span class="line">    <span class="built_in">width</span>: <span class="number">100</span>px;</span><br><span class="line">    <span class="built_in">height</span>: <span class="number">100</span>px;</span><br><span class="line">    <span class="built_in">background</span>: <span class="built_in">red</span>;</span><br><span class="line">    <span class="built_in">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line">p&#123;</span><br><span class="line">    <span class="built_in">width</span>: <span class="number">200</span>px;</span><br><span class="line">    <span class="built_in">height</span>: <span class="number">200</span>px;</span><br><span class="line">    <span class="built_in">background</span>: <span class="built_in">blue</span>;</span><br><span class="line">    <span class="built_in">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=<span class="string">"float"</span>&gt;I am a floated <span class="built_in">box</span>!&lt;/div&gt;</span><br><span class="line">&lt;p&gt;I am content inside the container.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/6p2jtzzqff03j50aornozxos/image_1dh2pth9oj4p9412k11kro1tn02a.png" alt="image_1dh2pth9oj4p9412k11kro1tn02a.png-13.2kB"></p>
+<p>现在我们的蓝色区域的文本是围绕着浮动元素进行排列的，如果要实现两栏布局的话有一种办法是让蓝色区域的marginLeft设置为红色区域的宽 + 你想要的边距</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background</span>: blue;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 p 变成BFC</p>
+<h3 id="解决包裹浮动元素没有高度的问题"><a href="#解决包裹浮动元素没有高度的问题" class="headerlink" title="解决包裹浮动元素没有高度的问题"></a>解决包裹浮动元素没有高度的问题</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.inner&#123;</span><br><span class="line"><span class="symbol">    float:</span> left;</span><br><span class="line"><span class="symbol">    width:</span> <span class="number">100</span>px;</span><br><span class="line"><span class="symbol">    height:</span> <span class="number">100</span>px;</span><br><span class="line"><span class="symbol">    background:</span> red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="params">&lt;div&gt;</span></span><br><span class="line">    <span class="params">&lt;div class='inner'&gt;</span><span class="params">&lt;/div&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/9fug72v07c84wmoc0xgmbfz0/image_1dh2qc0vdmsu698slaa112dn3k.png" alt="image_1dh2qc0vdmsu698slaa112dn3k.png-4.7kB"></p>
+<p>一般来说，div 不设置宽高的话，他的宽高会由子元素的宽高给撑起来，但是这边 包裹了一个浮动元素，发现父级元素的高度为 0</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/7pxxvy6tkz4ov0ku7jtqd55p/image_1dh2qhk4l1guf1koqjbokt41ne74e.png" alt="image_1dh2qhk4l1guf1koqjbokt41ne74e.png-11.8kB"></p>
+<p><img src="http://static.zybuluo.com/shenweizheng/jpwg0iwwcwuqncwygfiycsuz/image_1dh2qgtdi1nvsf2b19uo11ej19q541.png" alt="image_1dh2qgtdi1nvsf2b19uo11ej19q541.png-5kB"></p>
+<p>同样的设置为BFC</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/26/原型链 与 继承的理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">原型链 与 继承的理解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC-的触发条件"><span class="toc-number">1.</span> <span class="toc-text">BFC 的触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC-的规则"><span class="toc-number">2.</span> <span class="toc-text">BFC 的规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC解决的问题"><span class="toc-number">3.</span> <span class="toc-text">BFC解决的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#垂直方向-margin-重叠"><span class="toc-number">3.1.</span> <span class="toc-text">垂直方向 margin 重叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本不环绕浮动元素"><span class="toc-number">3.2.</span> <span class="toc-text">文本不环绕浮动元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决包裹浮动元素没有高度的问题"><span class="toc-number">3.3.</span> <span class="toc-text">解决包裹浮动元素没有高度的问题</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://shenweini.cn/2019/07/31/BFC的触发条件、布局规则、使用场景/",
+  owner: 'shenweizheng110',
+  repo: 'shenweizheng110.github.io',
+  oauth: {
+    client_id: '0174f090ce6e4ee38758',
+    client_secret: 'e0daec6ea9c5ab7f242ee7a1b1578949fc5484ee',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -244,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
