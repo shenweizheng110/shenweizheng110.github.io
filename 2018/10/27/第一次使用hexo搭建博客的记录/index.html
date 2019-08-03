@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>第一次使用hexo搭建博客的记录 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。 1.创建一个github账户这个直接官网创建 GitHub 2.创建一个本地仓库这里要注意你的Repository name">
+  <meta name="description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。">
 <meta name="keywords" content="唯你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一次使用hexo搭建博客的记录">
 <meta property="og:url" content="http://shenweini.cn/2018/10/27/第一次使用hexo搭建博客的记录/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。 1.创建一个github账户这个直接官网创建 GitHub 2.创建一个本地仓库这里要注意你的Repository name">
+<meta property="og:description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/m90nw4nyb9ohg4tqv1ruaw8i/TIM%E6%88%AA%E5%9B%BE20181021221725.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/kcp6ug83piiw75khyr3pjrck/TIM%E6%88%AA%E5%9B%BE20181021221854.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/yq5z8046ndm8lwqey2dre8w4/TIM%E6%88%AA%E5%9B%BE20181021223352.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/6zihqrjaxju7inxwces2gjp3/TIM%E6%88%AA%E5%9B%BE20181021223452.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/qreltan9nvok2lwmp6opnidy/TIM%E6%88%AA%E5%9B%BE20181021225244.png">
-<meta property="og:updated_time" content="2018-10-27T09:50:46.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:13:42.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一次使用hexo搭建博客的记录">
-<meta name="twitter:description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。 1.创建一个github账户这个直接官网创建 GitHub 2.创建一个本地仓库这里要注意你的Repository name">
+<meta name="twitter:description" content="基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。">
 <meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/m90nw4nyb9ohg4tqv1ruaw8i/TIM%E6%88%AA%E5%9B%BE20181021221725.png">
   
   
@@ -66,8 +66,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -78,6 +76,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -120,8 +120,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -142,9 +140,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,6 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>基于github的博客，搭建过程可谓可歌可泣，翻遍了配置文件，总的来说是成功了百分之八十。基本的形状已经搭建好了，评论的功能还未加入，等待后续添加。刚开始使用的是Jekyll的主题，个人觉得还是hexo的主题好看一点，主要是一开始使用Jekyll的主题直接崩掉了，汗。。。。</p>
+<a id="more"></a>
 <h2 id="1-创建一个github账户"><a href="#1-创建一个github账户" class="headerlink" title="1.创建一个github账户"></a>1.创建一个github账户</h2><p>这个直接官网创建 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></p>
 <h2 id="2-创建一个本地仓库"><a href="#2-创建一个本地仓库" class="headerlink" title="2.创建一个本地仓库"></a>2.创建一个本地仓库</h2><p><img src="http://static.zybuluo.com/shenweizheng/m90nw4nyb9ohg4tqv1ruaw8i/TIM%E6%88%AA%E5%9B%BE20181021221725.png" alt="创建本地仓库"><br><img src="http://static.zybuluo.com/shenweizheng/kcp6ug83piiw75khyr3pjrck/TIM%E6%88%AA%E5%9B%BE20181021221854.png" alt="填写基本信息"><br>这里要注意你的Repository name的格式必须是  用户名.github.io，记得勾选下面的初始化README，当然这个选不选应该是无所谓的.<br>这个创建完之后，你的博客地址就是 https://用户名.github.io</p>
 <h2 id="3-安装Git，node"><a href="#3-安装Git，node" class="headerlink" title="3.安装Git，node"></a>3.安装Git，node</h2><p>我们要用到git命令和node命令的，这边安装教程就没有了，官网上都有的，git不好安装的话直接去360安全管家上安装，反正我是这么安装的git</p>
@@ -356,6 +353,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -363,11 +362,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -386,6 +387,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -432,6 +469,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

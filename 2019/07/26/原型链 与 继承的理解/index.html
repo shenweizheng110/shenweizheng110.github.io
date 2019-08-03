@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>原型链 与 继承的理解 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想 构造函数在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型链 与 继承的理解">
 <meta property="og:url" content="http://shenweini.cn/2019/07/26/原型链 与 继承的理解/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想 构造函数在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。">
+<meta property="og:description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-26T12:47:05.904Z">
+<meta property="og:updated_time" content="2019-08-03T14:22:16.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型链 与 继承的理解">
-<meta name="twitter:description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想 构造函数在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。">
+<meta name="twitter:description" content="原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。  new 的由来关于new的由来大家可以借阅阮一峰老师的博客Javascript继承机制的设计思想">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -177,6 +173,7 @@
 <p>原型链是前端面试几乎必问的东西，原型链实现了js中的继承。在看完阮一峰老师的博客后，理解了原型链的作用。</p>
 </blockquote>
 <h2 id="new-的由来"><a href="#new-的由来" class="headerlink" title="new 的由来"></a>new 的由来</h2><p>关于new的由来大家可以借阅阮一峰老师的博客<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">Javascript继承机制的设计思想</a></p>
+<a id="more"></a>
 <h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>在es5之前还没有类的时候，js都是 new 一个构造函数来生成一个构造函数的对象，这边的构造函数相当于java中的class，在es6之后，为了方便js也诞生了 class 关键字。<br>构造函数和普通的function最直观的区别是 构造函数的函数名是大写的，它张这个样子<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'dog'</span>;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这边是定义了一个 Dog 的构造函数，那么我们可以使用 new 来创建一只狗</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dog = <span class="keyword">new</span> Dog(<span class="string">'哈士奇'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(dog.name); <span class="comment">// 哈士奇</span></span><br></pre></td></tr></table></figure>
@@ -222,6 +219,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -361,6 +369,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -368,11 +378,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -391,6 +403,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -437,6 +485,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

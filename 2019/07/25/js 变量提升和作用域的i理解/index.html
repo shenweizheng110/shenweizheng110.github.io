@@ -9,14 +9,14 @@
   <title>js 变量提升和作用域的理解 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="js 中的变量提升大体可以分为两种，一种是使用 var 声明的变量，另一种是函数的变量提升，而函数的创建可以分为函数声明和函数表达式两种，这两种具有不同的变量提升，以下为本人根据自己的理解参考其他博主的博客得出的看法，如有错误欢迎指正。  使用var声明的变量我们首先先看一段代码，12345function scopeTest()&amp;#123;    console.log(test); // u">
-<meta name="keywords" content="唯你">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 变量提升和作用域的理解">
 <meta property="og:url" content="http://shenweini.cn/2019/07/25/js 变量提升和作用域的i理解/index.html">
 <meta property="og:site_name" content="唯你の博客">
 <meta property="og:description" content="js 中的变量提升大体可以分为两种，一种是使用 var 声明的变量，另一种是函数的变量提升，而函数的创建可以分为函数声明和函数表达式两种，这两种具有不同的变量提升，以下为本人根据自己的理解参考其他博主的博客得出的看法，如有错误欢迎指正。  使用var声明的变量我们首先先看一段代码，12345function scopeTest()&amp;#123;    console.log(test); // u">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T06:45:29.270Z">
+<meta property="og:updated_time" content="2019-08-03T14:22:39.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 变量提升和作用域的理解">
 <meta name="twitter:description" content="js 中的变量提升大体可以分为两种，一种是使用 var 声明的变量，另一种是函数的变量提升，而函数的创建可以分为函数声明和函数表达式两种，这两种具有不同的变量提升，以下为本人根据自己的理解参考其他博主的博客得出的看法，如有错误欢迎指正。  使用var声明的变量我们首先先看一段代码，12345function scopeTest()&amp;#123;    console.log(test); // u">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -177,6 +173,7 @@
 <p>js 中的变量提升大体可以分为两种，一种是使用 var 声明的变量，另一种是函数的变量提升，而函数的创建可以分为函数声明和函数表达式两种，这两种具有不同的变量提升，以下为本人根据自己的理解参考其他博主的博客得出的看法，如有错误欢迎指正。</p>
 </blockquote>
 <h2 id="使用var声明的变量"><a href="#使用var声明的变量" class="headerlink" title="使用var声明的变量"></a>使用var声明的变量</h2><p>我们首先先看一段代码，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scopeTest</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(test); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> test = <span class="string">'hello'</span>;</span><br><span class="line">&#125;</span><br><span class="line">scopeTest();</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>以上代码输出的结果是 <code>undefined</code>，原因是 js 对于使用var声明的变量具有变量提升的特性，函数内部会首先声明函数内部需要的变量并赋值为undefined。以上代码等价于<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scopeTest</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> test;</span><br><span class="line">    <span class="built_in">console</span>.log(test);</span><br><span class="line">    test = <span class="string">'hello'</span>;</span><br><span class="line">&#125;</span><br><span class="line">scopeTest();</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>没有使用var声明的会变成全局变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">'hello'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scopeTest</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(test) <span class="comment">// hello</span></span><br><span class="line">    test = <span class="string">'helloworld'</span>;</span><br><span class="line">&#125;</span><br><span class="line">scopeTest();</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// helloworld</span></span><br></pre></td></tr></table></figure></p>
@@ -202,6 +199,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -341,6 +349,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -348,11 +358,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -371,6 +383,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -417,6 +465,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

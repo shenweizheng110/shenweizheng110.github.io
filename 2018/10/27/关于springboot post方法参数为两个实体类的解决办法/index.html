@@ -9,14 +9,14 @@
   <title>关于springboot post方法参数为两个实体类的解决办法 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。 1.分装成dto如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teac">
-<meta name="keywords" content="唯你">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于springboot post方法参数为两个实体类的解决办法">
 <meta property="og:url" content="http://shenweini.cn/2018/10/27/关于springboot post方法参数为两个实体类的解决办法/index.html">
 <meta property="og:site_name" content="唯你の博客">
 <meta property="og:description" content="前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。 1.分装成dto如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-27T09:48:55.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:21:54.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于springboot post方法参数为两个实体类的解决办法">
 <meta name="twitter:description" content="前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。 1.分装成dto如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teac">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,6 +172,7 @@
         <p>前端调用后端api某个post方法的时候，如果发现方法的参数为两个实体类的时候，我们像往常一样传参，后台会发生接收不到参数的问题。</p>
 <h2 id="1-分装成dto"><a href="#1-分装成dto" class="headerlink" title="1.分装成dto"></a>1.分装成dto</h2><p>如果两个参数都是实体类的话，可以采用将两个实体类封装成一个实体类的方法。比如说有两个实体类，Techer和Course 这是两个pojo 那么我们可以定义一个实体类叫做 TeacherCourseDto 他的属性只有两个，一个是Teacher teacher一个是Course course 这样前台传参的时候<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">teacher</span>: value1,</span><br><span class="line">    course: value2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样就可以了</p>
+<a id="more"></a>
 <h2 id="2-采用-InitBinder注解"><a href="#2-采用-InitBinder注解" class="headerlink" title="2.采用@InitBinder注解"></a>2.采用@InitBinder注解</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"student"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderStudent</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"student."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@InitBinder</span>(<span class="string">"course"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">initBinderCourse</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">      binder.setFieldDefaultPrefix(<span class="string">"course."</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>@InitBinder() 中间的value值，用于指定表单属性或请求参数的名字，符合该名字的将使用此处的DataBinder<br>注意： binder.setFieldDefaultPrefix(“student.”)，这里的”.”千万别忘记了！！！<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;  </span><br><span class="line">  <span class="comment">//get..set....  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span></span>&#123;  </span><br><span class="line">  <span class="keyword">String</span> id;  </span><br><span class="line">  <span class="keyword">String</span> note;</span><br><span class="line">  <span class="comment">//set..get...  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这边两个实体类，加上我们上面的initBinder注解 还要在ctrl上做点动作<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span>  </span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/classtest"</span>)  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> TestController &#123;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"student"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderUser(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"student."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 绑定变量名字和属性，参数封装进类  </span></span><br><span class="line">    <span class="meta">@InitBinder</span>(<span class="string">"course"</span>)  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> initBinderAddr(WebDataBinder binder) &#123;  </span><br><span class="line">        binder.setFieldDefaultPrefix(<span class="string">"course."</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/methodtest"</span>)  </span><br><span class="line">    <span class="meta">@ResponseBody</span>  </span><br><span class="line">   <span class="keyword">public</span> Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; test(<span class="meta">@ModelAttribute</span>(<span class="string">"student"</span>) Student student,<span class="meta">@ModelAttribute</span>(<span class="string">"course"</span>) Course course)&#123;  </span><br><span class="line">        Map&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; map=<span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();  </span><br><span class="line">        map.put(<span class="string">"student"</span>, student);  </span><br><span class="line">        map.put(<span class="string">"course"</span>, course);  </span><br><span class="line">        <span class="keyword">return</span> map;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
@@ -188,6 +185,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -322,6 +330,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -329,11 +339,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -352,6 +364,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -398,6 +446,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

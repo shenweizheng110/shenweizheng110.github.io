@@ -9,7 +9,7 @@
   <title>BFC的触发条件、布局规则、使用场景 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC  BFC 的触发条件 html根元素 &amp;lt;html&amp;gt; float 不为 none 绝对定位元素 也就是 position 为 absolute 和 fixed 行内快元素 display 为 inline-block display 为 table-c">
-<meta name="keywords" content="唯你">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BFC的触发条件、布局规则、使用场景">
 <meta property="og:url" content="http://shenweini.cn/2019/07/31/BFC的触发条件、布局规则、使用场景/index.html">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/9fug72v07c84wmoc0xgmbfz0/image_1dh2qc0vdmsu698slaa112dn3k.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/7pxxvy6tkz4ov0ku7jtqd55p/image_1dh2qhk4l1guf1koqjbokt41ne74e.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/jpwg0iwwcwuqncwygfiycsuz/image_1dh2qgtdi1nvsf2b19uo11ej19q541.png">
-<meta property="og:updated_time" content="2019-07-31T01:36:51.240Z">
+<meta property="og:updated_time" content="2019-08-03T14:21:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BFC的触发条件、布局规则、使用场景">
 <meta name="twitter:description" content="BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC  BFC 的触发条件 html根元素 &amp;lt;html&amp;gt; float 不为 none 绝对定位元素 也就是 position 为 absolute 和 fixed 行内快元素 display 为 inline-block display 为 table-c">
@@ -69,8 +69,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -81,6 +79,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -123,8 +123,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -145,9 +143,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -193,6 +189,7 @@
 <li>display 为 table-cell inline-block flex inline-flex grid inline-grid table-caption(表格标题)</li>
 <li>overflow 不为 visible</li>
 </ul>
+<a id="more"></a>
 <h2 id="BFC-的规则"><a href="#BFC-的规则" class="headerlink" title="BFC 的规则"></a>BFC 的规则</h2><ol>
 <li>内部的Box会在垂直方向，一个接一个地放置。Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</li>
 <li>每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
@@ -233,6 +230,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -363,6 +371,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -370,11 +380,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -393,6 +405,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -439,6 +487,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

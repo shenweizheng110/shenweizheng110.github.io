@@ -9,7 +9,7 @@
   <title>腾讯云服务器配置JDK，tomcat解决外网无法访问问题 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接下来改了tomcat的配置终于成功，记录一下。我用的是腾讯云的学生服务器，操作系统是CentOS7.2 64位 JDK版本是1.8.0 tomcat版本是8.5.34准备一下XShell工具，我是使用的XShell。还有一个WinScp工具用来上">
-<meta name="keywords" content="唯你">
+<meta name="keywords" content="服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="腾讯云服务器配置JDK，tomcat解决外网无法访问问题">
 <meta property="og:url" content="http://shenweini.cn/2018/11/10/腾讯云服务器配置JDK，tomcat解决外网无法访问问题/index.html">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/xs7nmzqmlgvdzwi1anzg7cvf/image_1crtsqrhpmbqirf1n2g17p0n2s6s.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/objwn9diivl04baejjzuw4ru/image_1crtssq284be17641u821v391dgc79.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/i7us0bl35qtytmr8ie00rchh/image_1crtt3g1d1lno1552p601sr325f83.png">
-<meta property="og:updated_time" content="2018-11-10T04:26:58.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:22:06.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯云服务器配置JDK，tomcat解决外网无法访问问题">
 <meta name="twitter:description" content="前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接下来改了tomcat的配置终于成功，记录一下。我用的是腾讯云的学生服务器，操作系统是CentOS7.2 64位 JDK版本是1.8.0 tomcat版本是8.5.34准备一下XShell工具，我是使用的XShell。还有一个WinScp工具用来上">
@@ -81,8 +81,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -93,6 +91,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -135,8 +135,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -157,9 +155,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -195,6 +191,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>前几天试了一下腾讯云的学生服务器，在配置tomcat的时候，配置了好久，一直都是无法访问主页，翻看了N多的博客，关了防火墙，配置了安全组，依旧无法访问，接下来改了tomcat的配置终于成功，记录一下。<br>我用的是腾讯云的学生服务器，操作系统是CentOS7.2 64位 JDK版本是1.8.0 tomcat版本是8.5.34<br>准备一下XShell工具，我是使用的XShell。还有一个WinScp工具用来上传文件，当然也可以使用命令，但是我感觉有点慢，不懂是不是错觉。</p>
+<a id="more"></a>
 <h2 id="1-配置JDK"><a href="#1-配置JDK" class="headerlink" title="1.配置JDK"></a>1.配置JDK</h2><p>网上看到了很多配置jdk的方法，相对而言，配置一下jdk还是很简单。我是使用的直接解压linux版本的jdk文件然后配置下环境变量，当然也有的是直接使用yum安装jdk。那么我们首先去<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk官网</a>下载一下jdk<br><img src="http://static.zybuluo.com/shenweizheng/d6as8u57y5cwx0zklb2l8ubg/image_1crsc1nek1797gbtv7i1rfvpiv9.png" alt="image_1crsc1nek1797gbtv7i1rfvpiv9.png-103.2kB"></p>
 <p>这边我们用的是后缀为.tar.gz的，这是linux版本的<br>使用我们的WinScp工具把我们刚刚的下载的jdk上传至我们的服务器。用XShell登录进服务器，这边有一个问题就是我看到有的博客是说一开始进去的时候不是root用户但是我这边是进去就是root用户。下面的所有的配置我们都是要在root用户下进行的。<br><img src="http://static.zybuluo.com/shenweizheng/dpu4hunouaswrrmozaq12750/image_1crscssno10vipt7m0e37m1rfd13.png" alt="image_1crscssno10vipt7m0e37m1rfd13.png-21.9kB"></p>
 <p>如果你不是root用户而是ubuntu用户那么<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo su</span></span><br></pre></td></tr></table></figure></p>
@@ -234,6 +231,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -373,6 +381,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -380,11 +390,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -403,6 +415,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -449,6 +497,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

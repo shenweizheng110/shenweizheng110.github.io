@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>webpack配置及踩过的那些坑 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。 1.基础准备创建一个文件夹webpackDemo，我们使用命令行进入这个文件夹，运行 npm init 命令，初始化这个文件夹，初">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。">
+<meta name="keywords" content="js,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack配置及踩过的那些坑">
 <meta property="og:url" content="http://shenweini.cn/2018/12/03/webpack配置及踩过的那些坑/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。 1.基础准备创建一个文件夹webpackDemo，我们使用命令行进入这个文件夹，运行 npm init 命令，初始化这个文件夹，初">
+<meta property="og:description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/p03mjogf4044egkmgw1y3jzz/image_1csm6khqv45cj0i1plv1erc15ig9.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/6w2mp3ir0jcu9vahebdtg5n0/image_1csm6mqk21otcctql4fvdcpcpm.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/0ky26he4f2kmgoddtgzdfpuo/image_1csm770vr12441ju3u61v1s49v2j.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/5fdepz23biva2ealjip37xvy/image_1csonnbu01u9340h1keo11d91nio9.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/68nmhoje7hk26hqsgfk6k2c1/image_1csonpuv21ev91ekv93i22k15gum.png">
-<meta property="og:updated_time" content="2018-12-03T07:19:47.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:23:29.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack配置及踩过的那些坑">
-<meta name="twitter:description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。 1.基础准备创建一个文件夹webpackDemo，我们使用命令行进入这个文件夹，运行 npm init 命令，初始化这个文件夹，初">
+<meta name="twitter:description" content="最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。">
 <meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/p03mjogf4044egkmgw1y3jzz/image_1csm6khqv45cj0i1plv1erc15ig9.png">
   
   
@@ -66,8 +66,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -78,6 +76,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -120,8 +120,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -142,9 +140,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,6 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近学习了一波webpack打包部署，作为一名前端，不会一个打包的工具可真的是丢人啊。不过，用webpack又要接触到了配置文件，这个当初当我放弃写后端的东西，不过以后还是要全面发展的。好了，话不多说，这篇文章用的是webpack4.x版本的，下面将细数当初才过的坑。</p>
+<a id="more"></a>
 <h2 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1.基础准备"></a>1.基础准备</h2><p>创建一个文件夹webpackDemo，我们使用命令行进入这个文件夹，运行 <code>npm init</code> 命令，初始化这个文件夹，初始化过程中出现的询问的一些配置，一路回车就好了。初始化好了之后，我们会发现文件夹里面已经多了package.json文件。<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack --<span class="built_in">save</span>-<span class="built_in">dev</span> webpack-cli --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
 <p>安装必要的 webpack 和 webpack-cli，安装成功之后的package.json文件如下</p>
 <p><img src="http://static.zybuluo.com/shenweizheng/p03mjogf4044egkmgw1y3jzz/image_1csm6khqv45cj0i1plv1erc15ig9.png" alt="image_1csm6khqv45cj0i1plv1erc15ig9.png-26.8kB"></p>
@@ -256,6 +253,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -395,6 +407,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -402,11 +416,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -425,6 +441,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -471,6 +523,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

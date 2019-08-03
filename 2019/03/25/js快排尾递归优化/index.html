@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>js快排尾递归优化 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。 常规版本function quickSort(arr, left, right) {     // 递归跳出条件     if (left &amp;gt;= right)         return;     let i = left,         j = right,">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。">
+<meta name="keywords" content="js,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js快排尾递归优化">
 <meta property="og:url" content="http://shenweini.cn/2019/03/25/js快排尾递归优化/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。 常规版本function quickSort(arr, left, right) {     // 递归跳出条件     if (left &amp;gt;= right)         return;     let i = left,         j = right,">
+<meta property="og:description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T13:09:51.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:23:05.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js快排尾递归优化">
-<meta name="twitter:description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。 常规版本function quickSort(arr, left, right) {     // 递归跳出条件     if (left &amp;gt;= right)         return;     let i = left,         j = right,">
+<meta name="twitter:description" content="尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,6 +170,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>尾递归是个什么东西这边就不介绍了。总之递归我是一直没有搞明白。但是我知道尾递归是为了解决递归造成的栈溢出和大量重复的计算。</p>
+<a id="more"></a>
 <h2 id="常规版本"><a href="#常规版本" class="headerlink" title="常规版本"></a>常规版本</h2><pre><code>function quickSort(arr, left, right) {
     // 递归跳出条件
     if (left &gt;= right)
@@ -215,6 +212,21 @@ console.log(testArr);
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -354,6 +366,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -361,11 +375,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -384,6 +400,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -430,6 +482,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

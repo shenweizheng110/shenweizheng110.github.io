@@ -17,7 +17,7 @@
 <meta property="og:description" content="加个小前提，本人投的是web前端，如果分方向的话，是React方向。俗话说，金三银四，在这充满了刺激的三月，我也拿着我的一页纸的简历投了好几家公司，下面记录着我参加了面试的几家公司以及近期整理出的题目。很尴尬，没有拿到任何一家的offer，经过这几次的面试也发现自己的基础确实很差，打算歇息一阵子好好补一补自己的基础，准备开始秋招或者明年的春招，毕竟我还是很向往大公司的待遇的。不过我也发现了一点，可">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/0lh7kggg8topfqk2grc9717w/TIM%E6%88%AA%E5%9B%BE20190325164720.png">
-<meta property="og:updated_time" content="2019-03-25T12:47:45.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:13:51.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="19年前端校招面经">
 <meta name="twitter:description" content="加个小前提，本人投的是web前端，如果分方向的话，是React方向。俗话说，金三银四，在这充满了刺激的三月，我也拿着我的一页纸的简历投了好几家公司，下面记录着我参加了面试的几家公司以及近期整理出的题目。很尴尬，没有拿到任何一家的offer，经过这几次的面试也发现自己的基础确实很差，打算歇息一阵子好好补一补自己的基础，准备开始秋招或者明年的春招，毕竟我还是很向往大公司的待遇的。不过我也发现了一点，可">
@@ -62,8 +62,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -74,6 +72,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -116,8 +116,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -138,9 +136,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,6 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>加个小前提，本人投的是web前端，如果分方向的话，是React方向。<br>俗话说，金三银四，在这充满了刺激的三月，我也拿着我的一页纸的简历投了好几家公司，下面记录着我参加了面试的几家公司以及近期整理出的题目。很尴尬，没有拿到任何一家的offer，经过这几次的面试也发现自己的基础确实很差，打算歇息一阵子好好补一补自己的基础，准备开始秋招或者明年的春招，毕竟我还是很向往大公司的待遇的。不过我也发现了一点，可能学历对于程序员有点影响，但是还是技术比较重要，只要你够牛逼，BAT肯定会向你打开大门，再不济也是磨练几年走社招进。但是个人认为对于考研和找工作动摇不定的还是先尝试一下考研吧，毕竟对于像我这样的不出名的小二本环境还是不咋地，985/211出名不是没有道理的。</p>
+<a id="more"></a>
 <h2 id="阿里前端校招–电话面试"><a href="#阿里前端校招–电话面试" class="headerlink" title="阿里前端校招–电话面试"></a>阿里前端校招–电话面试</h2><p>小生不才，第一轮的电话初试就被刷掉了，所以不清楚阿里的校招这个流程，我也只能提供电话初试的情况了，那天阳光明媚，中午刚下课接到一个电话，一看归属地浙江杭州已经开始梦想进入阿里的场景了，果不其然，约了第二天晚上八点的电话初始，又在情理之中的被刷掉了，历经一个小时，感觉就是这个面试官是真牛逼啊，我是在一个小时之内肚子里的存货被掏的干干净净的。</p>
 <h3 id="1-请求跨域问题"><a href="#1-请求跨域问题" class="headerlink" title="1. 请求跨域问题"></a>1. 请求跨域问题</h3><p>这是前端面试必问题型，我就写几个不一定对，因为我也是搜的我也没经历过跨域。</p>
 <ol>
@@ -560,6 +557,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -567,11 +566,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -590,6 +591,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -636,6 +673,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

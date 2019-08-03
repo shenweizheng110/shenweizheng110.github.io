@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>Git基本操作 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支  前面带有 * 号的表示当前分支。 git branch xxx 添加本地分支  git branch -d xxx 删除分支  git pull 拉取代码  git pull origin xxx 拉取远程分支  git push xxx 推送本地分支到远程  git merge xxx 合并分支 2. 合">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git基本操作">
 <meta property="og:url" content="http://shenweini.cn/2019/01/28/Git基本操作/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支  前面带有 * 号的表示当前分支。 git branch xxx 添加本地分支  git branch -d xxx 删除分支  git pull 拉取代码  git pull origin xxx 拉取远程分支  git push xxx 推送本地分支到远程  git merge xxx 合并分支 2. 合">
+<meta property="og:description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/z2noezmkolv3clrzsv3kr3ys/image_1d29tb0vg1bu35spagp1spr1tqr14.png">
-<meta property="og:updated_time" content="2019-01-28T10:07:47.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:22:24.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git基本操作">
-<meta name="twitter:description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支  前面带有 * 号的表示当前分支。 git branch xxx 添加本地分支  git branch -d xxx 删除分支  git pull 拉取代码  git pull origin xxx 拉取远程分支  git push xxx 推送本地分支到远程  git merge xxx 合并分支 2. 合">
+<meta name="twitter:description" content="1.查看分支git branch 查看本地分支 git branch -a 查看所有分支">
 <meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/z2noezmkolv3clrzsv3kr3ys/image_1d29tb0vg1bu35spagp1spr1tqr14.png">
   
   
@@ -62,8 +62,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -74,6 +72,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -116,8 +116,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -138,9 +136,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -178,6 +174,7 @@
         <h2 id="1-查看分支"><a href="#1-查看分支" class="headerlink" title="1.查看分支"></a>1.查看分支</h2><pre><code>git branch 查看本地分支
 git branch -a 查看所有分支
 </code></pre><p><img src="http://static.zybuluo.com/shenweizheng/z2noezmkolv3clrzsv3kr3ys/image_1d29tb0vg1bu35spagp1spr1tqr14.png" alt="image_1d29tb0vg1bu35spagp1spr1tqr14.png-3kB"></p>
+<a id="more"></a>
 <p>前面带有 * 号的表示当前分支。</p>
 <pre><code>git branch xxx 添加本地分支
 
@@ -203,6 +200,17 @@ git commit -m &apos;&apos;
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -342,6 +350,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -349,11 +359,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -372,6 +384,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -418,6 +466,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

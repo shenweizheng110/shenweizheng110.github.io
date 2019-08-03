@@ -9,7 +9,7 @@
   <title>js 微任务 宏任务 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="js 是单线程执行的，js中的任务按顺序一个一个的执行，但是一个任务耗时太长，那么后面的任务就需要等待，为了解决这种情况，将任务分为了同步任务和异步任务，而异步任务又可以分为微任务和宏任务。  首先第一段示例代码12345678910111213console.log(&apos;script start&apos;);setTimeout(function() &amp;#123;  console.log(&apos;setTi">
-<meta name="keywords" content="唯你">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 微任务 宏任务">
 <meta property="og:url" content="http://shenweini.cn/2019/07/26/js 微任务 宏任务的执行顺序解释/index.html">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/iy5q6fscnpe2c6cch47ck9na/image_1dglrup181e0m18gr10lc187e19549.png">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/cegc5egyrr3orq4ylwf1136k/image_1dglsb50i1tvh1ul01ur318fa6h39.png">
-<meta property="og:updated_time" content="2019-07-26T01:19:57.075Z">
+<meta property="og:updated_time" content="2019-08-03T14:22:54.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 微任务 宏任务">
 <meta name="twitter:description" content="js 是单线程执行的，js中的任务按顺序一个一个的执行，但是一个任务耗时太长，那么后面的任务就需要等待，为了解决这种情况，将任务分为了同步任务和异步任务，而异步任务又可以分为微任务和宏任务。  首先第一段示例代码12345678910111213console.log(&apos;script start&apos;);setTimeout(function() &amp;#123;  console.log(&apos;setTi">
@@ -63,8 +63,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -75,6 +73,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -117,8 +117,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,9 +137,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,6 +176,7 @@
 <p>js 是单线程执行的，js中的任务按顺序一个一个的执行，但是一个任务耗时太长，那么后面的任务就需要等待，为了解决这种情况，将任务分为了同步任务和异步任务，而异步任务又可以分为微任务和宏任务。</p>
 </blockquote>
 <p>首先第一段示例代码<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="string">'promise1'</span>);</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="string">'promise2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.<span class="built_in">log</span>(<span class="string">'script end'</span>);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>打印顺序为：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">script start</span><br><span class="line">script end</span><br><span class="line">promise1</span><br><span class="line">promise</span><br><span class="line">setTimeout</span><br></pre></td></tr></table></figure></p>
 <p>具体为什么会打印出这个顺序，下面在具体解释。<br>我们具体看一下js的执行流程：<br><img src="http://static.zybuluo.com/shenweizheng/iy5q6fscnpe2c6cch47ck9na/image_1dglrup181e0m18gr10lc187e19549.png" alt="image_1dglrup181e0m18gr10lc187e19549.png-496.3kB"></p>
 <p><a href="https://juejin.im/post/5b498d245188251b193d4059" target="_blank" rel="noopener">张倩qianniuerlv-2 JS事件循环机制（event loop）之宏任务/微任务</a>解读：</p>
@@ -260,6 +257,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -399,6 +407,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -406,11 +416,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -429,6 +441,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -475,6 +523,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

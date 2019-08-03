@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>react应用中mobx未检测到数组的更新 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;)) 这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;))">
+<meta name="keywords" content="js,react,mobx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react应用中mobx未检测到数组的更新">
 <meta property="og:url" content="http://shenweini.cn/2018/10/28/react应用中mobx未检测到数组的更新/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;)) 这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规">
+<meta property="og:description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;))">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T03:33:35.000Z">
+<meta property="og:updated_time" content="2019-08-03T14:23:20.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react应用中mobx未检测到数组的更新">
-<meta name="twitter:description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;)) 这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规">
+<meta name="twitter:description" content="在mobx中定义一个可观察的数组123class Store&amp;#123;    @observable testArray = [];&amp;#125; 在组件里面引用这个store123testArray.map(item=&amp;gt;(    &amp;lt;span&amp;gt;&amp;#123;item&amp;#125;&amp;lt;/span&amp;gt;))">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,6 +171,7 @@
       
         <p>在mobx中定义一个可观察的数组<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span>&#123;</span></span><br><span class="line">    @observable testArray = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在组件里面引用这个store<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>这个打印这个testArray数组会发现这个时候的数组类型已经不是我们常规的array类型了，已经被mobx转换成了observableArray类型的数组，这种的如果你的store里面只有这一个数组没有其他变量的时候，更新整个数组，除非你是将这个数组置为空，不然组件是不会观察到他的改变，就不会重新render了<br>解决办法是：<br>在组件中使用这个数组的时候，slice()一下转变成我们正常的js类型的array就可以了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">testArray.slice().map(<span class="function"><span class="params">item</span>=&gt;</span>(</span><br><span class="line">    &lt;span&gt;&#123;item&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br></pre></td></tr></table></figure></p>
 <p>具体slice的地方可以是在store里面也可以在组件里面，组件里面就像上面写的那样,store里面就是先得到testArray然后slice一下，在把新的数组赋值给他。<br>如果遇到使用数组的时候出现一些看不懂的报错，排除数组越界的一些错误，多半是因为observableArray类型的问题，这个时候不妨slice()一下试试。</p>
 
@@ -185,6 +182,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">mobx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -324,6 +340,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -331,11 +349,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -354,6 +374,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -400,6 +456,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   

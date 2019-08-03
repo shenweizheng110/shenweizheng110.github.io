@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>对 js 中的this 的理解 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论  纯粹的函数调用 这是函数通常的用法，属于全局性的调用，所以this指向全局。  最简单的示例12345var x = 1;function test() &amp;#123;   console.log(this.x);&amp;#125;test();">
-<meta name="keywords" content="唯你">
+  <meta name="description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对 js 中的this 的理解">
 <meta property="og:url" content="http://shenweini.cn/2019/07/25/对 js 中 this 指向的理解/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论  纯粹的函数调用 这是函数通常的用法，属于全局性的调用，所以this指向全局。  最简单的示例12345var x = 1;function test() &amp;#123;   console.log(this.x);&amp;#125;test();">
+<meta property="og:description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T14:11:00.364Z">
+<meta property="og:updated_time" content="2019-08-03T14:21:36.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对 js 中的this 的理解">
-<meta name="twitter:description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论  纯粹的函数调用 这是函数通常的用法，属于全局性的调用，所以this指向全局。  最简单的示例12345var x = 1;function test() &amp;#123;   console.log(this.x);&amp;#125;test();">
+<meta name="twitter:description" content="this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -72,6 +70,8 @@
             
     			
             
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -114,8 +114,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,9 +134,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,6 +172,7 @@
         <blockquote>
 <p>this 指针一直都是一个很玄学的东西，它是函数运行时，函数内部自动生成的对象，只能在函数体内部使用。一下示例都是测试过的，对于答案请放心。如有疑问欢迎评论</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="纯粹的函数调用"><a href="#纯粹的函数调用" class="headerlink" title="纯粹的函数调用"></a>纯粹的函数调用</h2><blockquote>
 <p>这是函数通常的用法，属于全局性的调用，所以this指向全局。</p>
 </blockquote>
@@ -238,6 +235,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -377,6 +385,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+      
+      
     
     
 
@@ -384,11 +394,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -407,6 +419,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -453,6 +501,12 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Bug依旧&lt;br&gt;生活依旧&lt;br&gt;&lt;br&gt;未来迷茫&lt;br&gt;专注前端&lt;br&gt;&lt;br&gt;有些人说不出哪里好，就是谁都替代不了。</div>
+  	  	
+    	</section>
     
   </div>
   
