@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://shenweini.cn">
-  <title>categories | 唯你の博客</title>
+  <title>解决行内元素之间的间隙 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言">
-<meta name="keywords" content="唯你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://shenweini.cn/categories/index.html">
+  <meta name="description" content="今天写demo，用行内元素的时候，发现了一个小问题，行内元素之间尽然会有一个小空隙，但是我没有加左右的margin真的是神奇。突然明白为什么每次面试问我行内元素和块级元素的区别时，面试官脸上的失望是从哪里来的。  上代码： 123456789101112.main&amp;#123;    margin: 100px;&amp;#125;span&amp;#123;    background: blue;    co">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决行内元素之间的间隙">
+<meta property="og:url" content="http://shenweini.cn/2019/08/13/解决行内元素之间的间隙/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta property="og:description" content="今天写demo，用行内元素的时候，发现了一个小问题，行内元素之间尽然会有一个小空隙，但是我没有加左右的margin真的是神奇。突然明白为什么每次面试问我行内元素和块级元素的区别时，面试官脸上的失望是从哪里来的。  上代码： 123456789101112.main&amp;#123;    margin: 100px;&amp;#125;span&amp;#123;    background: blue;    co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T08:24:36.000Z">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/64t51of6himpombw4l501jf8/image_1di4oeu1skdd1jhe125are5bhv9.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/i6hpzoa17umdwyw88oq8ix9p/image_1di4ojmqnggm13e58a2vatl8sm.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/6o55pyf87hmqn5mro8a6an4f/image_1di4orf6p7pj1du01gs21mn1s1b13.png">
+<meta property="og:updated_time" content="2019-08-13T06:13:04.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta name="twitter:title" content="解决行内元素之间的间隙">
+<meta name="twitter:description" content="今天写demo，用行内元素的时候，发现了一个小问题，行内元素之间尽然会有一个小空隙，但是我没有加左右的margin真的是神奇。突然明白为什么每次面试问我行内元素和块级元素的区别时，面试官脸上的失望是从哪里来的。  上代码： 123456789101112.main&amp;#123;    margin: 100px;&amp;#125;span&amp;#123;    background: blue;    co">
+<meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/64t51of6himpombw4l501jf8/image_1di4oeu1skdd1jhe125are5bhv9.png">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -149,27 +153,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="categories-" class="article article-type-categories " itemscope="" itemprop="blogPost">
+            <article id="post-解决行内元素之间的间隙" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      categories
+      解决行内元素之间的间隙
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2018-12-05T08:24:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-05</time>
+        <a href="/2019/08/13/解决行内元素之间的间隙/" class="archive-article-date">
+  	<time datetime="2019-08-13T06:13:04.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>今天写demo，用行内元素的时候，发现了一个小问题，行内元素之间尽然会有一个小空隙，但是我没有加左右的margin真的是神奇。突然明白为什么每次面试问我行内元素和块级元素的区别时，面试官脸上的失望是从哪里来的。</p>
+</blockquote>
+<p>上代码：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.main&#123;</span><br><span class="line"><span class="symbol">    margin:</span> <span class="number">100</span>px;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line"><span class="symbol">    background:</span> blue;</span><br><span class="line"><span class="symbol">    color:</span> white;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="params">&lt;div class="main"&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/64t51of6himpombw4l501jf8/image_1di4oeu1skdd1jhe125are5bhv9.png" alt="image_1di4oeu1skdd1jhe125are5bhv9.png-4.8kB"></p>
+<p>这三个span之间的空格岂不是很玄妙。<br>换种写法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/i6hpzoa17umdwyw88oq8ix9p/image_1di4ojmqnggm13e58a2vatl8sm.png" alt="image_1di4ojmqnggm13e58a2vatl8sm.png-4.8kB"></p>
+<p>间隙消失了，那么可以看出之所以产生间隙是因为行内元素后面换了行所以产生了间隙。<br>那么解决办法也有很多。</p>
+<h2 id="负边距"><a href="#负边距" class="headerlink" title="负边距"></a>负边距</h2><p>行内元素在水平方向上的 margin 是存在的，在垂直方向上不存在，所以加一个负的margin就可以了。</p>
+<h2 id="使用font-size-0"><a href="#使用font-size-0" class="headerlink" title="使用font-size = 0"></a>使用font-size = 0</h2><p>神奇的属性</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.main&#123;</span><br><span class="line"><span class="symbol">    margin:</span> <span class="number">100</span>px;</span><br><span class="line">    font-size: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line"><span class="symbol">    background:</span> blue;</span><br><span class="line"><span class="symbol">    color:</span> white;</span><br><span class="line">    font-size: <span class="number">16</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="params">&lt;div class="main"&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然其他还有很多去除间隙的方法，我还是更喜欢 font-size 这一种</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/6o55pyf87hmqn5mro8a6an4f/image_1di4orf6p7pj1du01gs21mn1s1b13.png" alt="image_1di4orf6p7pj1du01gs21mn1s1b13.png-4.4kB"></p>
+
       
 
       
@@ -177,6 +196,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -188,6 +218,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/13/css 实现三角形、梯形、平行四边形、爱心等形状/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css 实现三角形、梯形、平行四边形、爱心等形状</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -209,7 +249,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#负边距"><span class="toc-number">1.</span> <span class="toc-text">负边距</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用font-size-0"><span class="toc-number">2.</span> <span class="toc-text">使用font-size = 0</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -234,7 +274,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://shenweini.cn/categories/index.html",
+  id: "http://shenweini.cn/2019/08/13/解决行内元素之间的间隙/",
   owner: 'shenweizheng110',
   repo: 'shenweizheng110.github.io',
   oauth: {
@@ -267,7 +307,7 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
