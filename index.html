@@ -150,6 +150,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/23/Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡/">Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/23/Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡/" class="archive-article-date">
+  	<time datetime="2019-08-23T13:32:40.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>nginx经常挂在嘴边的就是反向代理，不过他还可以干很多事，我所了解的只是反向代理、静态文件缓存、静态资源服务器，对于负载均衡只是略有涉及。</p>
+</blockquote>
+<blockquote>
+<p>Nginx (“engine x”) 是一个高性能的 HTTP 和 反向代理 服务器 ，也是一个 IMAP/POP3/SMTP 代理 服务器 。 Nginx 是由 Igor Sysoev 为俄罗斯访问量第二的 Rambler.ru 站点开发的，第一个公开版本0.1.0发布于2004年10月4日。其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名</p>
+</blockquote>
+<blockquote>
+<p>引用一下菜鸟教程的简介：Nginx功能丰富，可作为HTTP服务器，也可作为反向代理服务器，邮件服务器。支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能。并且支持很多第三方的模块扩展。Nginx的稳定性、功能集、示例配置文件和低系统资源的消耗让他后来居上，在全球活跃的网站中有12.18%的使用比率，大约为2220万个网站。</p>
+</blockquote>
+<blockquote>
+<p>特点<br>(1)：代理服务器，快速高效反向代理，提升网站性能。<br>(2)：负载均衡器，内部支持Rails和PHP,也可支持HTTP代理服务器，对外进行服务。同时支持简单容错和利用算法进行负载均衡。<br>(3)：性能方面，Nginx专门为性能设计，实现注重效率。采用Poll模型，可以支持更多的并发连接，并在大并发时占用很低内存。<br>(4)：稳定性方面，采用分阶段资源分配技术，使CPU资源占用率低。<br>(5)：高可用性方面，支持热备，启动迅速。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/08/23/Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/23/Nginx 反向代理 + 缓存 + 静态资源服务器 + 负载均衡/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-node.js Express框架中使用websoecket 包含 ts 和 非 ts 环境" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -898,85 +985,6 @@
 
 
   
-    <article id="post-js 变量提升和作用域的i理解" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/js 变量提升和作用域的i理解/">js 变量提升和作用域的理解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/25/js 变量提升和作用域的i理解/" class="archive-article-date">
-  	<time datetime="2019-07-25T06:45:29.270Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>js 中的变量提升大体可以分为两种，一种是使用 var 声明的变量，另一种是函数的变量提升，而函数的创建可以分为函数声明和函数表达式两种，这两种具有不同的变量提升，以下为本人根据自己的理解参考其他博主的博客得出的看法，如有错误欢迎指正。</p>
-</blockquote>
-<h2 id="使用var声明的变量"><a href="#使用var声明的变量" class="headerlink" title="使用var声明的变量"></a>使用var声明的变量</h2><p>我们首先先看一段代码，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scopeTest</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(test); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> test = <span class="string">'hello'</span>;</span><br><span class="line">&#125;</span><br><span class="line">scopeTest();</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/07/25/js 变量提升和作用域的i理解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/25/js 变量提升和作用域的i理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1070,10 +1078,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
@@ -1094,6 +1098,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1110,11 +1118,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
             
             <div class="clearfix"></div>
