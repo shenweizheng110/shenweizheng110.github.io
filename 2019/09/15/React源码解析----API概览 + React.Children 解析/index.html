@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://shenweini.cn">
-  <title>Archives: 2019 | 唯你の博客</title>
+  <title>React源码解析----API概览 + React.Children 解析 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言">
-<meta name="keywords" content="唯你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="唯你の博客">
-<meta property="og:url" content="http://shenweini.cn/archives/2019/page/2/index.html">
+  <meta name="description" content="最近闲来无事，研究一波React源码，一开始是以Vue源码起步的，结果发现我对Vue实在是不熟悉，看Vue源码还不够格，相比而言，我更喜欢React，可能是因为第一个学的框架学的就是React，所以对React更加的充满热情，也更加的熟练，个人观点，React还是要比Vue牛逼一点好看一点的。 React本身的源码是很少的，根据打包出来的Commonjs版本看来，React只有两千多行代码，但是">
+<meta name="keywords" content="源码,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React源码解析----API概览 + React.Children 解析">
+<meta property="og:url" content="http://shenweini.cn/2019/09/15/React源码解析----API概览 + React.Children 解析/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta property="og:description" content="最近闲来无事，研究一波React源码，一开始是以Vue源码起步的，结果发现我对Vue实在是不熟悉，看Vue源码还不够格，相比而言，我更喜欢React，可能是因为第一个学的框架学的就是React，所以对React更加的充满热情，也更加的熟练，个人观点，React还是要比Vue牛逼一点好看一点的。 React本身的源码是很少的，根据打包出来的Commonjs版本看来，React只有两千多行代码，但是">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/s26qv0gdxzzh7z46ri153dqa/image_1dkp91mf4199d1kds1ul615rklpr9.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/3mo8ztspn32aw1yv80rj3rrr/image_1dkp98tod16gl3u91q614tj1a7jm.png">
+<meta property="og:image" content="http://static.zybuluo.com/shenweizheng/pgtbpsapbp5zibhv8w8v493t/image_1dkp9bfcjqb5ptn1dt02dm8lp13.png">
+<meta property="og:updated_time" content="2019-09-15T06:19:08.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="唯你の博客">
-<meta name="twitter:description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta name="twitter:title" content="React源码解析----API概览 + React.Children 解析">
+<meta name="twitter:description" content="最近闲来无事，研究一波React源码，一开始是以Vue源码起步的，结果发现我对Vue实在是不熟悉，看Vue源码还不够格，相比而言，我更喜欢React，可能是因为第一个学的框架学的就是React，所以对React更加的充满热情，也更加的熟练，个人观点，React还是要比Vue牛逼一点好看一点的。 React本身的源码是很少的，根据打包出来的Commonjs版本看来，React只有两千多行代码，但是">
+<meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/s26qv0gdxzzh7z46ri153dqa/image_1dkp91mf4199d1kds1ul615rklpr9.png">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -148,246 +153,220 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React源码解析----API概览 + React.Children 解析" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React源码解析----API概览 + React.Children 解析
+    </h1>
+  
+
+        
+        <a href="/2019/09/15/React源码解析----API概览 + React.Children 解析/" class="archive-article-date">
+  	<time datetime="2019-09-15T06:19:08.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近闲来无事，研究一波React源码，一开始是以Vue源码起步的，结果发现我对Vue实在是不熟悉，看Vue源码还不够格，相比而言，我更喜欢React，可能是因为第一个学的框架学的就是React，所以对React更加的充满热情，也更加的熟练，个人观点，React还是要比Vue牛逼一点好看一点的。</p>
+<p>React本身的源码是很少的，根据打包出来的Commonjs版本看来，React只有两千多行代码，但是ReactDom据说有两万多行，框架开发者实属伟大！致敬！！！</p>
+<p>那么这一篇是React一些通用的API概况和React.Children方法的解析，如有不到位或错误的地方欢迎指教，我的邮箱 <a href="mailto:1103107216@qq.com" target="_blank" rel="noopener">1103107216@qq.com</a> 您也可以下方评论。</p>
+</blockquote>
+<h2 id="React源码获取"><a href="#React源码获取" class="headerlink" title="React源码获取"></a>React源码获取</h2><p>我发现有两种方式，一种呢就是从<code>github</code>上拉取<code>react</code>项目的源码，github地址大家可以自己找，<code>git clone</code>下来之后，在<code>/packages/react</code>下面就是<code>react</code>的源码了，可以看到下面是分成了很多个小文件的，这个我一般用来看的不是用来调试的。</p>
+<p>另一个呢就是建一个项目，安装一下<code>cnpm i react react-dom -S</code>之后在<code>node_modules</code>里面找到<code>react</code>的源码，建一个项目，用<code>webpack</code>打包，装个<code>babel</code>一套，毕竟es6比es5好使多了，开个热更新，之后就直接修改这个<code>node_modules</code>里面的源码进行打印调试了，我个人喜欢<code>console.log</code>不解释，只有在调试一些算法问题时我才会开Debug模式。</p>
+<a id="more"></a>
+<h2 id="通用API"><a href="#通用API" class="headerlink" title="通用API"></a>通用API</h2><p>首先先来一个简单的 React 应用,这边使用es6的class写法，个人建议多练练函数式编程，写函数组件比写class舒服多了，毕竟React16提供了这么多强大的Hook</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">React</span> from <span class="symbol">'reac</span>t';</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                <span class="type">Hello</span> <span class="type">World</span></span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OK, Hello World 致敬，我们可以开始干活了。首先看一下React的源码，在<code>/packages/react/src/React.js</code>这个文件里面，可以看到React的定义，你会发现和Vue的源码很不一样，这也是我更喜欢React的原因，慢慢的亲切感。</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">const React = &#123;</span><br><span class="line"><span class="symbol">  Children:</span> &#123;</span><br><span class="line"><span class="built_in">    map,</span></span><br><span class="line"><span class="built_in">    forEach,</span></span><br><span class="line"><span class="built_in">    count,</span></span><br><span class="line"><span class="built_in">    toArray,</span></span><br><span class="line"><span class="built_in">    only,</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line"><span class="built_in">  createRef,</span></span><br><span class="line"><span class="built_in">  Component,</span></span><br><span class="line"><span class="built_in">  PureComponent,</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">  createContext,</span></span><br><span class="line"><span class="built_in">  forwardRef,</span></span><br><span class="line"><span class="built_in">  lazy,</span></span><br><span class="line"><span class="built_in">  memo,</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">  useCallback,</span></span><br><span class="line"><span class="built_in">  useContext,</span></span><br><span class="line"><span class="built_in">  useEffect,</span></span><br><span class="line"><span class="built_in">  useImperativeHandle,</span></span><br><span class="line"><span class="built_in">  useDebugValue,</span></span><br><span class="line"><span class="built_in">  useLayoutEffect,</span></span><br><span class="line"><span class="built_in">  useMemo,</span></span><br><span class="line"><span class="built_in">  useReducer,</span></span><br><span class="line"><span class="built_in">  useRef,</span></span><br><span class="line"><span class="built_in">  useState,</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">  Fragment:</span> REACT_FRAGMENT_TYPE,</span><br><span class="line"><span class="symbol">  StrictMode:</span> REACT_STRICT_MODE_TYPE,</span><br><span class="line"><span class="symbol">  Suspense:</span> REACT_SUSPENSE_TYPE,</span><br><span class="line"></span><br><span class="line"><span class="symbol">  createElement: __DEV__ ? createElementWithValidation :</span> createElement,</span><br><span class="line"><span class="symbol">  cloneElement: __DEV__ ? cloneElementWithValidation :</span> cloneElement,</span><br><span class="line"><span class="symbol">  createFactory: __DEV__ ? createFactoryWithValidation :</span> createFactory,</span><br><span class="line"><span class="symbol">  isValidElement:</span> isValidElement,</span><br><span class="line"></span><br><span class="line"><span class="symbol">  version:</span> ReactVersion,</span><br><span class="line"></span><br><span class="line"><span class="symbol">  unstable_ConcurrentMode:</span> REACT_CONCURRENT_MODE_TYPE,</span><br><span class="line"><span class="symbol">  unstable_Profiler:</span> REACT_PROFILER_TYPE,</span><br><span class="line">  // 这一行跳过</span><br><span class="line"><span class="symbol">  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:</span> ReactSharedInternals,</span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>这边定义了React里面的所有的通用方法，这边只做一个概览，每一个具体的用处会在后面进行详细的介绍。</p>
+<h3 id="Children"><a href="#Children" class="headerlink" title="Children"></a>Children</h3><p>这个里面封装的是对一个组件的子组件进行遍历等的一些操作，我们一般不会用到，讲真我除了看源码会用他来试一试其他的真没见到有人用它。</p>
+<ul>
+<li><p>forEach,map 类似于数组的遍历对象遍历啥的</p>
+</li>
+<li><p>count 用来计算子组件的数量</p>
+</li>
+<li><p>only 官方解释：验证 children 是否只有一个子节点（一个 React 元素），如果有则返回它，否则此方法会抛出错误。 Tips：不可以使用<code>React.Children.map</code>方法的返回值作为参数，因为map的返回值是一个数组而不是一个React元素</p>
+</li>
+<li><p>toArray 将Children按照数组的形式扁平展开并返回</p>
+</li>
+</ul>
+<p>搞不懂没关系，后面会介绍，有一个印象就好</p>
+<h3 id="createRef"><a href="#createRef" class="headerlink" title="createRef"></a>createRef</h3><p>ref 属性是在开发中经常使用的，说白了就是用来获取真实Dom的，新版的React中使用ref的操作也变了</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.inputRef = <span class="type">React</span>.createRef();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 这是一种</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"text"</span> ref=&#123;<span class="keyword">this</span>.inputRef&#125; /&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 这是另外一种</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"text"</span> ref=&#123;node =&gt; <span class="keyword">this</span>.inputRef = node&#125;&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Component-PureComponent"><a href="#Component-PureComponent" class="headerlink" title="Component, PureComponent"></a>Component, PureComponent</h3><p>这两个大家应该都很熟悉，创建一个React组件，PureComponent在判断组件是否改更新的时候更加的方便。</p>
+<h3 id="createContext"><a href="#createContext" class="headerlink" title="createContext"></a>createContext</h3><p>创建一个上下文，返回一个<code>Context</code>对象，里面包含了<code>Provider，Consumer</code>属性，一般用来往组件树的更深处传递数据，避免一个组件一个组件的往下传，不方便解藕</p>
+<h3 id="forwardRef"><a href="#forwardRef" class="headerlink" title="forwardRef"></a>forwardRef</h3><p>创建一个React组件,这个组件能够将其接受的 ref 属性转发到其组件树下的另一个组件中.<code>React.forwardRef</code> 接受渲染函数作为参数。React 将使用 props 和 ref 作为参数来调用此函数。此函数应返回 React 节点。</p>
+<h3 id="lazy"><a href="#lazy" class="headerlink" title="lazy"></a>lazy</h3><p>组件懒加载</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const SomeComponent = React.lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./SomeComponent'</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="memo"><a href="#memo" class="headerlink" title="memo"></a>memo</h3><p>用来创建一个HOC的</p>
+<h3 id="useState…"><a href="#useState…" class="headerlink" title="useState…"></a>useState…</h3><p>接下来这几个就是React16大名鼎鼎的Hook函数，功能强大，函数式组件的福音，亲切感倍足</p>
+<h3 id="Fragment-StrictMode-Suspense-unstable-ConcurrentMode-unstable-Profiler"><a href="#Fragment-StrictMode-Suspense-unstable-ConcurrentMode-unstable-Profiler" class="headerlink" title="Fragment StrictMode Suspense unstable_ConcurrentMode unstable_Profiler"></a>Fragment StrictMode Suspense unstable_ConcurrentMode unstable_Profiler</h3><p>这四个都是React提供的组件，但他们呢其实都只是占位符，都是一个Symbol，在React实际检测到他们的时候会做一些特殊的处理，比如StrictMode和AsyncMode会让他们的子节点对应的Fiber的mode都变成和他们一样的mode</p>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><p>createElement 这是React中最重要的方法了，用来创建<code>ReactElement</code></p>
+<h3 id="cloneElement"><a href="#cloneElement" class="headerlink" title="cloneElement"></a>cloneElement</h3><p>顾名思义，克隆一个<code>ReactElement</code></p>
+<h3 id="createFactory"><a href="#createFactory" class="headerlink" title="createFactory"></a>createFactory</h3><p>创建一个工厂，这个工厂专门用来创建某一类<code>ReactElement</code></p>
+<h3 id="isValidElement"><a href="#isValidElement" class="headerlink" title="isValidElement"></a>isValidElement</h3><p>用来检测是否是一个<code>ReactElement</code></p>
+<h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p>记录React的当前版本号</p>
+<h2 id="React-Children-详解"><a href="#React-Children-详解" class="headerlink" title="React.Children 详解"></a>React.Children 详解</h2><blockquote>
+<p>React.Children 提供了用于处理 this.props.children 不透明数据结构的实用方法。</p>
+</blockquote>
+<p>这一部分的代码在 <code>packages/react/react/src/ReactChildren.js</code>里面，主要分装了<code>forEach map count only toArray</code>，前两者用于遍历Reach Children。</p>
+<ul>
+<li><p><code>count</code> 用于返回该组件的children数量</p>
+</li>
+<li><p><code>only</code> 用于判断该组件是不是只有一个子节点</p>
+</li>
+<li><p><code>toArray</code> 将React.Children以扁平的形式返回出来，并附加<code>key</code></p>
+</li>
+</ul>
+<p>在<code>React</code>中，一段文本可以被称为一个子节点，一段标签也可以被成为一个节点。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="comment">// Hello World</span></span><br><span class="line">        console.log(<span class="keyword">this</span>.props.children);</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;&lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">ReactDom</span>.render(</span><br><span class="line">    &lt;<span class="type">App</span>&gt;</span><br><span class="line">        <span class="comment">// 一段文本也是一个子节点</span></span><br><span class="line">        <span class="type">Hello</span> <span class="type">World</span></span><br><span class="line">    &lt;/<span class="type">App</span>&gt; ,</span><br><span class="line">    document.getElementById(<span class="symbol">'roo</span>t')</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="comment">// 被标记为一个React.Element</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.props.children);</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDom.render(</span><br><span class="line">    &lt;App&gt;</span><br><span class="line">        <span class="comment">// 一段标签也可以是一个子节点</span></span><br><span class="line">        &lt;div&gt;Hello World&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>App&gt; ,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>在上面的示例代码中，如果传递的子节点是一段html标签，那么打印出来的结果是这样的：</p>
+<p><img src="http://static.zybuluo.com/shenweizheng/s26qv0gdxzzh7z46ri153dqa/image_1dkp91mf4199d1kds1ul615rklpr9.png" alt="image_1dkp91mf4199d1kds1ul615rklpr9.png-36.3kB"></p>
+<p>我们也可以在<code>App</code>组件中显示我们传递的这个Children</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        console.log(<span class="keyword">this</span>.props.children);</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;&#123; <span class="keyword">this</span>.props.children &#125;&lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/3mo8ztspn32aw1yv80rj3rrr/image_1dkp98tod16gl3u91q614tj1a7jm.png" alt="image_1dkp98tod16gl3u91q614tj1a7jm.png-2.4kB"></p>
+<p>如果传递的是多个节点，那么就会被解析成一个数组</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">App</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello China<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">App</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://static.zybuluo.com/shenweizheng/pgtbpsapbp5zibhv8w8v493t/image_1dkp9bfcjqb5ptn1dt02dm8lp13.png" alt="image_1dkp9bfcjqb5ptn1dt02dm8lp13.png-22.8kB"></p>
+<p>那么<code>Reach.Children</code>的方法应该就是在这里进行使用，因为我实际上也没有使用过，做个简单的示例，我们可以打印一下<code>App</code>这个组件的子节点�数，使用<code>count</code>方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="comment">// 2</span></span><br><span class="line">        <span class="built_in">console</span>.log(React.Children.count(<span class="keyword">this</span>.props.children));</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;&#123; <span class="keyword">this</span>.props.children &#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDom.render(</span></span><br><span class="line"><span class="regexp">    &lt;App&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;Hello World&lt;/</span>div&gt;</span><br><span class="line">        &lt;div&gt;Hello China&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>App&gt; ,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这边会打印出来一个 2 因为我们传递的是两个节点</p>
+<p>示例看完了我们可以来分析一下源码了，介绍一下<code>map</code>的源码</p>
+<p>找到<code>ReactChildren.js</code>（这是在React源码里，不是在node_modules里），找到最下面模块导出语句</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export &#123;</span><br><span class="line">  forEachChildren <span class="keyword">as</span> <span class="keyword">forEach</span>,</span><br><span class="line">  mapChildren <span class="keyword">as</span> map,</span><br><span class="line">  countChildren <span class="keyword">as</span> <span class="keyword">count</span>,</span><br><span class="line">  onlyChild <span class="keyword">as</span> only,</span><br><span class="line">  toArray,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以看到<code>map</code>是<code>mapChildren</code>的一个别名，下面找到这个函数</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Maps children that are typically specified as `props.children`.</span><br><span class="line"> *</span><br><span class="line"> * See https://reactjs.org/docs/react-api.html<span class="comment">#reactchildrenmap</span></span><br><span class="line"> *</span><br><span class="line"> * The provided mapFunction(child, key, index) will be called for each</span><br><span class="line"> * leaf child.</span><br><span class="line"> *</span><br><span class="line"> * @<span class="keyword">param</span> &#123;?*&#125; <span class="keyword">children</span> <span class="keyword">Children</span> <span class="keyword">tree</span> <span class="keyword">container</span>.</span><br><span class="line"> * @<span class="keyword">param</span> &#123;function(*, int)&#125; <span class="keyword">func</span> <span class="keyword">The</span> <span class="keyword">map</span> <span class="keyword">function</span>.</span><br><span class="line"> * @<span class="keyword">param</span> &#123;*&#125; <span class="keyword">context</span> <span class="keyword">Context</span> <span class="keyword">for</span> <span class="keyword">mapFunction</span>.</span><br><span class="line"> * @<span class="keyword">return</span> &#123;object&#125; <span class="keyword">Object</span> <span class="keyword">containing</span> <span class="keyword">the</span> <span class="keyword">ordered</span> <span class="keyword">map</span> <span class="keyword">of</span> <span class="keyword">results</span>.</span><br><span class="line"> */</span><br><span class="line">function mapChildren(children, func, context) &#123;</span><br><span class="line">  if (children == null) &#123;</span><br><span class="line">    return children;</span><br><span class="line">  &#125;</span><br><span class="line">  const result = [];</span><br><span class="line">  mapIntoWithKeyPrefixInternal(children, result, null, func, context);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法接受三个参数，第一个参数是我们传递的<code>this.props.children</code>,也是必选参数，第二个参数是一个function，在遍历的过程中，会对每一个节点都使用这个function，这个function接受一个参数，参数就是当前遍历的节点，第三个参数是一个上下文，一般不用传。<br>可以看出重点是<code>mapIntoWithKeyPrefixInternal</code>这个方法。</p>
+<p>使用示例<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="type">React</span>.<span class="type">Children</span>.map(<span class="keyword">this</span>.props.children, (item) =&gt; &#123;</span><br><span class="line">            console.log(item);</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;&#123; <span class="keyword">this</span>.props.children &#125;&lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function mapIntoWithKeyPrefixInternal(children, array, <span class="keyword">prefix</span>, <span class="function"><span class="keyword">func</span>, <span class="title">context</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 被忽视的前缀</span></span><br><span class="line">  <span class="keyword">let</span> escapedPrefix = '';</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">prefix</span> != null) &#123;</span><br><span class="line">    escapedPrefix = escapeUserProvidedKey(<span class="keyword">prefix</span>) + '/';</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历上下文</span></span><br><span class="line">  const traverseContext = getPooledTraverseContext(</span><br><span class="line">    array,</span><br><span class="line">    escapedPrefix,</span><br><span class="line">    <span class="function"><span class="keyword">func</span>,</span></span><br><span class="line"><span class="function">    <span class="title">context</span>,</span></span><br><span class="line"><span class="function">  );</span></span><br><span class="line"><span class="function">  <span class="title">traverseAllChildren</span><span class="params">(children, mapSingleChildIntoContext, traverseContext)</span></span>;</span><br><span class="line">  releaseTraverseContext(traverseContext);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先是获取一下遍历的上下文，这个在后面的方法应该会用到，下面就是开始遍历所有的Children了，重点是<code>traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);</code>，第一个参数好理解就是我们传递的<code>this.props.children</code>，第二个参数是一个方法，第三个参数就是前面获取到的遍历上下文。</p>
+<p>首先看一下这个<code>getPooledTraverseContext</code>方法</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> POOL_SIZE = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> traverseContextPool = [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPooledTraverseContext</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  mapResult,</span></span></span><br><span class="line"><span class="function"><span class="params">  keyPrefix,</span></span></span><br><span class="line"><span class="function"><span class="params">  mapFunction,</span></span></span><br><span class="line"><span class="function"><span class="params">  mapContext,</span></span></span><br><span class="line"><span class="function"><span class="params">)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (traverseContextPool.length) &#123;</span><br><span class="line">    <span class="keyword">const</span> traverseContext = traverseContextPool.pop();</span><br><span class="line">    traverseContext.result = mapResult;</span><br><span class="line">    traverseContext.keyPrefix = keyPrefix;</span><br><span class="line">    traverseContext.func = mapFunction;</span><br><span class="line">    traverseContext.context = mapContext;</span><br><span class="line">    traverseContext.count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> traverseContext;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      result: mapResult,</span><br><span class="line">      keyPrefix: keyPrefix,</span><br><span class="line">      func: mapFunction,</span><br><span class="line">      context: mapContext,</span><br><span class="line">      count: <span class="number">0</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用了一个闭包，外层有一个<code>traverseContextPool</code>记录者遍历上下文的一个<code>pool</code>，我脑海中蹦出来的词是连接池，所以暂且就这么理解他，这个连接池的容量为10，如果这个连接池里有东西的话，也就是说这个<code>traverseContextPool.length !== 0</code>的话，那么会弹出最后一个进行赋值然后返回，如果池里没有东西的话就直接返回一个新的对象。</p>
+<p>下面看重点方法<code>traverseAllChildren</code></p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Traverses children that are typically specified as `props.children`, but</span><br><span class="line"> * might also be specified through attributes:</span><br><span class="line"> *</span><br><span class="line"> * - `traverseAllChildren(this.props.children, ...)`</span><br><span class="line"> * - `traverseAllChildren(this.props.leftPanelChildren, ...)`</span><br><span class="line"> *</span><br><span class="line"> * The `traverseContext` is an optional argument that is passed through the</span><br><span class="line"> * entire traversal. It can be used to store accumulations or anything else that</span><br><span class="line"> * the callback might find relevant.</span><br><span class="line"> *</span><br><span class="line"> * @<span class="keyword">param</span> &#123;?*&#125; <span class="keyword">children</span> <span class="keyword">Children</span> <span class="keyword">tree</span> <span class="keyword">object</span>.</span><br><span class="line"> * @<span class="keyword">param</span> &#123;!function&#125; <span class="keyword">callback</span> <span class="keyword">To</span> <span class="keyword">invoke</span> <span class="keyword">upon</span> <span class="keyword">traversing</span> <span class="keyword">each</span> <span class="keyword">child</span>.</span><br><span class="line"> * @<span class="keyword">param</span> &#123;?*&#125; <span class="keyword">traverseContext</span> <span class="keyword">Context</span> <span class="keyword">for</span> <span class="keyword">traversal</span>.</span><br><span class="line"> * @<span class="keyword">return</span> &#123;!number&#125; <span class="keyword">The</span> <span class="keyword">number</span> <span class="keyword">of</span> <span class="keyword">children</span> <span class="keyword">in</span> <span class="keyword">this</span> <span class="keyword">subtree</span>.</span><br><span class="line"> */</span><br><span class="line">function traverseAllChildren(children, callback, traverseContext) &#123;</span><br><span class="line">  if (children == null) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return traverseAllChildrenImpl(children, <span class="string">''</span>, callback, traverseContext);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要看这个方法的实现<code>traverseAllChildrenImpl</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;?*&#125; children Children tree container.</span></span><br><span class="line"><span class="comment"> * @param &#123;!string&#125; nameSoFar Name of the key path so far.</span></span><br><span class="line"><span class="comment"> * @param &#123;!function&#125; callback Callback to invoke with each child found.</span></span><br><span class="line"><span class="comment"> * @param &#123;?*&#125; traverseContext Used to pass information throughout the traversal</span></span><br><span class="line"><span class="comment"> * process.</span></span><br><span class="line"><span class="comment"> * @return &#123;!number&#125; The number of children in this subtree.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">traverseAllChildrenImpl</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  children,</span></span></span><br><span class="line"><span class="function"><span class="params">  nameSoFar,</span></span></span><br><span class="line"><span class="function"><span class="params">  callback,</span></span></span><br><span class="line"><span class="function"><span class="params">  traverseContext,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">type</span> = <span class="keyword">typeof</span> children;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">type</span> === <span class="string">'undefined'</span> || <span class="keyword">type</span> === <span class="string">'boolean'</span>) &#123;</span><br><span class="line">    <span class="comment">// All of the above are perceived as null.</span></span><br><span class="line">    children = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> invokeCallback = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (children === <span class="literal">null</span>) &#123;</span><br><span class="line">    invokeCallback = <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">type</span>) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'string'</span>:</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'number'</span>:</span><br><span class="line">        invokeCallback = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'object'</span>:</span><br><span class="line">        <span class="keyword">switch</span> (children.$$<span class="keyword">typeof</span>) &#123;</span><br><span class="line">          <span class="keyword">case</span> REACT_ELEMENT_TYPE:</span><br><span class="line">          <span class="keyword">case</span> REACT_PORTAL_TYPE:</span><br><span class="line">            invokeCallback = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (invokeCallback) &#123;</span><br><span class="line">    callback(</span><br><span class="line">      traverseContext,</span><br><span class="line">      children,</span><br><span class="line">      <span class="comment">// If it's the only child, treat the name as if it was wrapped in an array</span></span><br><span class="line">      <span class="comment">// so that it's consistent if the number of children grows.</span></span><br><span class="line">      nameSoFar === <span class="string">''</span> ? SEPARATOR + getComponentKey(children, <span class="number">0</span>) : nameSoFar,</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> child;</span><br><span class="line">  <span class="keyword">let</span> nextName;</span><br><span class="line">  <span class="keyword">let</span> subtreeCount = <span class="number">0</span>; <span class="comment">// Count of children found in the current subtree.</span></span><br><span class="line">  <span class="keyword">const</span> nextNamePrefix =</span><br><span class="line">    nameSoFar === <span class="string">''</span> ? SEPARATOR : nameSoFar + SUBSEPARATOR;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(children)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; children.length; i++) &#123;</span><br><span class="line">      child = children[i];</span><br><span class="line">      nextName = nextNamePrefix + getComponentKey(child, i);</span><br><span class="line">      subtreeCount += traverseAllChildrenImpl(</span><br><span class="line">        child,</span><br><span class="line">        nextName,</span><br><span class="line">        callback,</span><br><span class="line">        traverseContext,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> iteratorFn = getIteratorFn(children);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> iteratorFn === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">        <span class="comment">// Warn about using Maps as children</span></span><br><span class="line">        <span class="keyword">if</span> (iteratorFn === children.entries) &#123;</span><br><span class="line">          warning(</span><br><span class="line">            didWarnAboutMaps,</span><br><span class="line">            <span class="string">'Using Maps as children is unsupported and will likely yield '</span> +</span><br><span class="line">              <span class="string">'unexpected results. Convert it to a sequence/iterable of keyed '</span> +</span><br><span class="line">              <span class="string">'ReactElements instead.'</span>,</span><br><span class="line">          );</span><br><span class="line">          didWarnAboutMaps = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> iterator = iteratorFn.call(children);</span><br><span class="line">      <span class="keyword">let</span> step;</span><br><span class="line">      <span class="keyword">let</span> ii = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span> (!(step = iterator.next()).done) &#123;</span><br><span class="line">        child = step.value;</span><br><span class="line">        nextName = nextNamePrefix + getComponentKey(child, ii++);</span><br><span class="line">        subtreeCount += traverseAllChildrenImpl(</span><br><span class="line">          child,</span><br><span class="line">          nextName,</span><br><span class="line">          callback,</span><br><span class="line">          traverseContext,</span><br><span class="line">        );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">type</span> === <span class="string">'object'</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> addendum = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">        addendum =</span><br><span class="line">          <span class="string">' If you meant to render a collection of children, use an array '</span> +</span><br><span class="line">          <span class="string">'instead.'</span> +</span><br><span class="line">          ReactDebugCurrentFrame.getStackAddendum();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> childrenString = <span class="string">''</span> + children;</span><br><span class="line">      invariant(</span><br><span class="line">        <span class="literal">false</span>,</span><br><span class="line">        <span class="string">'Objects are not valid as a React child (found: %s).%s'</span>,</span><br><span class="line">        childrenString === <span class="string">'[object Object]'</span></span><br><span class="line">          ? <span class="string">'object with keys &#123;'</span> + <span class="built_in">Object</span>.keys(children).join(<span class="string">', '</span>) + <span class="string">'&#125;'</span></span><br><span class="line">          : childrenString,</span><br><span class="line">        addendum,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> subtreeCount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分步解析<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">let invokeCallback = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (children === <span class="literal">null</span>) &#123;</span><br><span class="line">    invokeCallback = <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'string'</span>:</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'number'</span>:</span><br><span class="line">        invokeCallback = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'object'</span>:</span><br><span class="line">        <span class="keyword">switch</span> (children.$$typeof) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">REACT_ELEMENT_TYPE:</span></span><br><span class="line">          <span class="keyword">case</span> <span class="string">REACT_PORTAL_TYPE:</span></span><br><span class="line">            invokeCallback = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (invokeCallback) &#123;</span><br><span class="line">    callback(</span><br><span class="line">      traverseContext,</span><br><span class="line">      children,</span><br><span class="line">      <span class="comment">// If it's the only child, treat the name as if it was wrapped in an array</span></span><br><span class="line">      <span class="comment">// so that it's consistent if the number of children grows.</span></span><br><span class="line">      nameSoFar === <span class="string">''</span> ? SEPARATOR + getComponentKey(children, 0) : nameSoFar,</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这一块是用来判断 children 类型的，如果是<code>string</code>比如说传递一个文本，<code>number</code>,<code>object</code>比如说一个dom节点，那么表明 children 只是一个节点，那么就直接执行 <code>callback</code> 返回一个 1</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Array.isArray(children)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; children.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">      child = children[<span class="built_in">i</span>];</span><br><span class="line">      nextName = nextNamePrefix + getComponentKey(child, <span class="built_in">i</span>);</span><br><span class="line">      subtreeCount += traverseAllChildrenImpl(</span><br><span class="line">        child,</span><br><span class="line">        nextName,</span><br><span class="line">        callback,</span><br><span class="line">        traverseContext,</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们传递的是多个节点，那么会遍历children数组，进行递归遍历，直到返回的是上面显示的几个类型。</p>
+<p>上边提到的<code>callback</code>就是传递的<code>mapSingleChildIntoContext</code>,这边就是利用到之前的<code>traverseContextPool</code>被我称之为连接池的东西.</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function mapSingleChildIntoContext(bookKeeping, child, childKey) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;result, keyPrefix, <span class="function"><span class="keyword">func</span>, <span class="title">context</span>&#125; = <span class="title">bookKeeping</span>;</span></span><br><span class="line"></span><br><span class="line">  let mappedChild = <span class="function"><span class="keyword">func</span>.<span class="title">call</span><span class="params">(context, child, bookKeeping.count++)</span>;</span></span><br><span class="line">  <span class="keyword">if</span> (Array.<span class="built_in">isArray</span>(mappedChild)) &#123;</span><br><span class="line">    mapIntoWithKeyPrefixInternal(mappedChild, result, childKey, c =&gt; c)<span class="comment">;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mappedChild != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isValidElement(mappedChild)) &#123;</span><br><span class="line">      mappedChild = cloneAndReplaceKey(</span><br><span class="line">        mappedChild,</span><br><span class="line">        // Keep both the (mapped) <span class="literal">and</span> old keys <span class="keyword">if</span> they differ, just as</span><br><span class="line">        // traverseAllChildren used <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">for</span> objects as children</span><br><span class="line">        keyPrefix +</span><br><span class="line">          (mappedChild.key &amp;&amp; (!child || child.key !== mappedChild.key)</span><br><span class="line">            ? escapeUserProvidedKey(mappedChild.key) + <span class="string">'/'</span></span><br><span class="line">            : <span class="string">''</span>) +</span><br><span class="line">          childKey,</span><br><span class="line">      )<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    result.push(mappedChild)<span class="comment">;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这边的<code>mappedChild</code>就是我们传递的funcion的返回值，function呢就是调用<code>React.Children.map(children,callback)</code>这里的callback了，如果这个返回值返回的是一个数组的话，那么就进行递归调用，这个时候就需要用到之前的连接池了。</p>
+<p>采用这个连接池的目的我也是在其他的地方看到了</p>
+<blockquote>
+<p>因为对Children的处理一般在render里面，所以会比较频繁，所以设置一个pool减少声明和gc的开销</p>
+</blockquote>
+<p>这就是<code>React.Children.map</code>的实现。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/26/js 微任务 宏任务的执行顺序解释/" class="archive-article-date">
-  	<time datetime="2019-07-26T01:19:57.075Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/26/js 微任务 宏任务的执行顺序解释/">js 微任务 宏任务</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/对 js 中 this 指向的理解/" class="archive-article-date">
-  	<time datetime="2019-07-25T14:11:00.364Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/对 js 中 this 指向的理解/">对 js 中的this 的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/js 变量提升和作用域的i理解/" class="archive-article-date">
-  	<time datetime="2019-07-25T06:45:29.270Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/js 变量提升和作用域的i理解/">js 变量提升和作用域的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/js快排尾递归优化/" class="archive-article-date">
-  	<time datetime="2019-03-25T13:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/js快排尾递归优化/">js快排尾递归优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/25/19年校招前端面经（阿里-小米-字节跳动）/" class="archive-article-date">
-  	<time datetime="2019-03-25T12:47:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/10/void (0) ??? undefined ???/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">void (0) ??? undefined ???</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/25/19年校招前端面经（阿里-小米-字节跳动）/">19年前端校招面经</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React源码获取"><span class="toc-number">1.</span> <span class="toc-text">React源码获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用API"><span class="toc-number">2.</span> <span class="toc-text">通用API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Children"><span class="toc-number">2.1.</span> <span class="toc-text">Children</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createRef"><span class="toc-number">2.2.</span> <span class="toc-text">createRef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Component-PureComponent"><span class="toc-number">2.3.</span> <span class="toc-text">Component, PureComponent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createContext"><span class="toc-number">2.4.</span> <span class="toc-text">createContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#forwardRef"><span class="toc-number">2.5.</span> <span class="toc-text">forwardRef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lazy"><span class="toc-number">2.6.</span> <span class="toc-text">lazy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#memo"><span class="toc-number">2.7.</span> <span class="toc-text">memo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useState…"><span class="toc-number">2.8.</span> <span class="toc-text">useState…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fragment-StrictMode-Suspense-unstable-ConcurrentMode-unstable-Profiler"><span class="toc-number">2.9.</span> <span class="toc-text">Fragment StrictMode Suspense unstable_ConcurrentMode unstable_Profiler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement"><span class="toc-number">2.10.</span> <span class="toc-text">createElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cloneElement"><span class="toc-number">2.11.</span> <span class="toc-text">cloneElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createFactory"><span class="toc-number">2.12.</span> <span class="toc-text">createFactory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isValidElement"><span class="toc-number">2.13.</span> <span class="toc-text">isValidElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#version"><span class="toc-number">2.14.</span> <span class="toc-text">version</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-Children-详解"><span class="toc-number">3.</span> <span class="toc-text">React.Children 详解</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/28/Git基本操作/" class="archive-article-date">
-  	<time datetime="2019-01-28T10:07:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/28/Git基本操作/">Git基本操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://shenweini.cn/2019/09/15/React源码解析----API概览 + React.Children 解析/",
+  owner: 'shenweizheng110',
+  repo: 'shenweizheng110.github.io',
+  oauth: {
+    client_id: '9a9f14a0de8bfc030ab4',
+    client_secret: '6fcc94d3f22e22ba67aa7e65d07e08f42d6cb9a6',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -411,8 +390,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
