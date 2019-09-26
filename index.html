@@ -150,6 +150,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/26/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount/">React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/26/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount/" class="archive-article-date">
+  	<time datetime="2019-09-26T03:08:03.938Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前介绍了React16.8版本的React公用API，本着学习最新版的React的想法，但是败在了Fiber的阵下，还有回过头来写搞明白React15的源码，毕竟从15到16是一次重大的更新。本文中React源码版本为 15.6.2 ，望各位看官找准版本号，不同的版本还是有着细微的区别的</p>
+<p>值得一提的是，在阅读源码时，在Chrome中打断点是一个很好的操作，可以了解到函数的调用栈，变量的值，一步一步的调试还可以了解整个执行的流程，一边调试一边记录着流程一边在加以理解一边感慨这神乎其技的封装。</p>
+<p>博客会同步到github上，这样也算是有了开源的项目。欢迎各位看官指教！</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/09/26/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/26/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React源码解析----createElement + Component + PureComponent" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -923,92 +1007,6 @@
 
 
   
-    <article id="post-BFC的触发条件、布局规则、使用场景" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/31/BFC的触发条件、布局规则、使用场景/">BFC的触发条件、布局规则、使用场景</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/31/BFC的触发条件、布局规则、使用场景/" class="archive-article-date">
-  	<time datetime="2019-07-31T01:36:51.240Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>BFC指的是块级格式化上下文，简单的来说，BFC就是创建一个盒子，盒子内部的元素布局不影响盒子外部的元素。html根元素就是一个BFC</p>
-</blockquote>
-<h2 id="BFC-的触发条件"><a href="#BFC-的触发条件" class="headerlink" title="BFC 的触发条件"></a>BFC 的触发条件</h2><ul>
-<li>html根元素 <code>&lt;html&gt;</code></li>
-<li>float 不为 none</li>
-<li>绝对定位元素 也就是 position 为 absolute 和 fixed</li>
-<li>行内快元素 display 为 inline-block</li>
-<li>display 为 table-cell inline-block flex inline-flex grid inline-grid table-caption(表格标题)</li>
-<li>overflow 不为 visible</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/07/31/BFC的触发条件、布局规则、使用场景/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/31/BFC的触发条件、布局规则、使用场景/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1142,11 +1140,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
