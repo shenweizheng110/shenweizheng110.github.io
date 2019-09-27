@@ -150,6 +150,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/27/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent/">React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/27/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent/" class="archive-article-date">
+  	<time datetime="2019-09-27T13:12:44.317Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>instantiateReactComponent 方法是React中的一个很重要的方法，主要作用是根据给定的node(ReactElement类型)对象，实例化出一个将被挂载的实例。实例化出的实例大体有三种，ReactEmptyComponent、ReactCompositeComponent、ReactHostComponent，其中ReactCompositeComponent是重点，内部包装了很多方法，而ReactHostComponent主要用来实例化文本组件实例。</p>
+<p>概述<br>Given a ReactNode, create an instance that will actually be mounted.<br>给一个ReactNode 指的是 ReactElement 对象，根据该对象创建一个实际要挂载的实例</p>
+<p>大致流程<br>判断 node 的类型以及 node.type 的类型，根据不同的类型创建不同的实例</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/09/27/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/27/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（1）ReactMount" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -924,89 +1008,6 @@
 
 
   
-    <article id="post-css 实现三角形、梯形、平行四边形、爱心等形状" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/css 实现三角形、梯形、平行四边形、爱心等形状/">css 实现三角形、梯形、平行四边形、爱心等形状</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/css 实现三角形、梯形、平行四边形、爱心等形状/" class="archive-article-date">
-  	<time datetime="2019-08-13T05:35:03.351Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>css 是一门很高深的学问，是前端页面是否好看的支柱。之前一直小看了css的力量，最近看其他博主的书才明白自己的css是多么的菜，以为会点布局就是css了有点贻笑大方了。这篇博客利用css 实现各种形状的编写。</p>
-<p>完整代码 <a href="https://github.com/shenweizheng110/study/blob/master/demo/cssShape.html" target="_blank" rel="noopener">https://github.com/shenweizheng110/study/blob/master/demo/cssShape.html</a></p>
-</blockquote>
-<p>css 要想实现三角形、梯形灯形状，主要利用 border 的相关特性。那么首先看一下border属性，我们给一个div设置很宽的border。</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line"><span class="attribute">border-top</span>: <span class="number">50px</span> solid red;</span><br><span class="line"><span class="attribute">border-left</span>: <span class="number">50px</span> solid black;</span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">50px</span> solid yellow;</span><br><span class="line"><span class="attribute">border-bottom</span>: <span class="number">50px</span> solid blue;</span><br></pre></td></tr></table></figure>
-<p>效果为：</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/enpxiprs301m0huftiqh3klq/image_1dhe36eagier2e71cekou71g6r9.png" alt="image_1dhe36eagier2e71cekou71g6r9.png-3kB"></p>
-        
-          <a class="article-more-a" href="/2019/08/13/css 实现三角形、梯形、平行四边形、爱心等形状/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/css 实现三角形、梯形、平行四边形、爱心等形状/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1116,19 +1117,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">express</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mobx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">express</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,11 +1141,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
