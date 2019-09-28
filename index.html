@@ -150,6 +150,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/28/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates/">React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/28/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates/" class="archive-article-date">
+  	<time datetime="2019-09-28T03:05:58.462Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>上篇博客介绍了<code>instantiateReactComponent</code>方法，方法内部实现还是很简单的，那么回到react得渲染流程里，接下来就是执行<code>ReactUpdates.batchedUpdates</code>方法，所以本篇博客讲解<code>ReactUpdates</code>操作，从名字可以看出这是处理React更新的文件，内部用到一个很重要得东西就是<code>Transaction</code>，对于这个词想必大家还是很熟悉得。<code>ReactUpdates</code>内部实现也是很简单，内部封装了<code>batchedUpdates</code>，<code>enqueueUpdate</code>，<code>flushBatchedUpdates</code>等方法，而这三个是最重要的操作。内部也用到了一些全局依赖注入得东西，和上一篇博客提到的是一样的。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/09/28/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/28/React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（3）ReactUpdates/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React@15.6.2源码解析---从 ReactDOM.render 到页面渲染（2）instantiateReactComponent" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -920,94 +1002,6 @@
 
 
   
-    <article id="post-解决行内元素之间的间隙" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/解决行内元素之间的间隙/">解决行内元素之间的间隙</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/13/解决行内元素之间的间隙/" class="archive-article-date">
-  	<time datetime="2019-08-13T06:13:04.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>今天写demo，用行内元素的时候，发现了一个小问题，行内元素之间尽然会有一个小空隙，但是我没有加左右的margin真的是神奇。突然明白为什么每次面试问我行内元素和块级元素的区别时，面试官脸上的失望是从哪里来的。</p>
-</blockquote>
-<p>上代码：</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.main&#123;</span><br><span class="line"><span class="symbol">    margin:</span> <span class="number">100</span>px;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line"><span class="symbol">    background:</span> blue;</span><br><span class="line"><span class="symbol">    color:</span> white;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="params">&lt;div class="main"&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://static.zybuluo.com/shenweizheng/64t51of6himpombw4l501jf8/image_1di4oeu1skdd1jhe125are5bhv9.png" alt="image_1di4oeu1skdd1jhe125are5bhv9.png-4.8kB"></p>
-<p>这三个span之间的空格岂不是很玄妙。<br>换种写法</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>第一个<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://static.zybuluo.com/shenweizheng/i6hpzoa17umdwyw88oq8ix9p/image_1di4ojmqnggm13e58a2vatl8sm.png" alt="image_1di4ojmqnggm13e58a2vatl8sm.png-4.8kB"></p>
-<p>间隙消失了，那么可以看出之所以产生间隙是因为行内元素后面换了行所以产生了间隙。<br>那么解决办法也有很多。</p>
-<h2 id="负边距"><a href="#负边距" class="headerlink" title="负边距"></a>负边距</h2><p>行内元素在水平方向上的 margin 是存在的，在垂直方向上不存在，所以加一个负的margin就可以了。</p>
-<h2 id="使用font-size-0"><a href="#使用font-size-0" class="headerlink" title="使用font-size = 0"></a>使用font-size = 0</h2><p>神奇的属性</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.main&#123;</span><br><span class="line"><span class="symbol">    margin:</span> <span class="number">100</span>px;</span><br><span class="line">    font-size: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line"><span class="symbol">    background:</span> blue;</span><br><span class="line"><span class="symbol">    color:</span> white;</span><br><span class="line">    font-size: <span class="number">16</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="params">&lt;div class="main"&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line">    <span class="params">&lt;span&gt;</span>第一个<span class="params">&lt;/span&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当然其他还有很多去除间隙的方法，我还是更喜欢 font-size 这一种</p>
-<p><img src="http://static.zybuluo.com/shenweizheng/6o55pyf87hmqn5mro8a6an4f/image_1di4orf6p7pj1du01gs21mn1s1b13.png" alt="image_1di4orf6p7pj1du01gs21mn1s1b13.png-4.4kB"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/解决行内元素之间的间隙/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1113,11 +1107,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
