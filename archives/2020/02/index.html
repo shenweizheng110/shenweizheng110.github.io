@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://shenweini.cn">
-  <title>History 和 Hash 两种路由的区别 | 唯你の博客</title>
+  <title>Archives: 2020/2 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天遇到一个问题，写Vue项目的时候习惯性的使用 history 模式的路由，但是之前是自己起一个nginx做一个404重定向到index.html，但是发现直接使用hash模式的时候是不用做这些操作的，不会存在这种404的问题，究其原因还是因为history是每次刷新都需要返回html信息的。  Hashhash模式最直观的地方就在于会在路由上加一个#，形如localhost:8080/#/c">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="article">
-<meta property="og:title" content="History 和 Hash 两种路由的区别">
-<meta property="og:url" content="http://shenweini.cn/2019/10/12/History 和 Hash 两种路由的区别/index.html">
+  <meta name="description" content="无做什么，记得为自己而做，那就毫无怨言">
+<meta name="keywords" content="唯你">
+<meta property="og:type" content="website">
+<meta property="og:title" content="唯你の博客">
+<meta property="og:url" content="http://shenweini.cn/archives/2020/02/index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="今天遇到一个问题，写Vue项目的时候习惯性的使用 history 模式的路由，但是之前是自己起一个nginx做一个404重定向到index.html，但是发现直接使用hash模式的时候是不用做这些操作的，不会存在这种404的问题，究其原因还是因为history是每次刷新都需要返回html信息的。  Hashhash模式最直观的地方就在于会在路由上加一个#，形如localhost:8080/#/c">
+<meta property="og:description" content="无做什么，记得为自己而做，那就毫无怨言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-12T08:28:36.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="History 和 Hash 两种路由的区别">
-<meta name="twitter:description" content="今天遇到一个问题，写Vue项目的时候习惯性的使用 history 模式的路由，但是之前是自己起一个nginx做一个404重定向到index.html，但是发现直接使用hash模式的时候是不用做这些操作的，不会存在这种404的问题，究其原因还是因为history是每次刷新都需要返回html信息的。  Hashhash模式最直观的地方就在于会在路由上加一个#，形如localhost:8080/#/c">
+<meta name="twitter:title" content="唯你の博客">
+<meta name="twitter:description" content="无做什么，记得为自己而做，那就毫无怨言">
   
   
     <link rel="icon" href="/img/avator.jpg">
@@ -149,140 +148,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-History 和 Hash 两种路由的区别" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      History 和 Hash 两种路由的区别
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/14/《你不知道的JS》上篇整理 /" class="archive-article-date">
+  	<time datetime="2020-02-14T06:13:25.268Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/02/14/《你不知道的JS》上篇整理 /">《你不知道的JS》上篇整理</a>
     </h1>
   
 
-        
-        <a href="/2019/10/12/History 和 Hash 两种路由的区别/" class="archive-article-date">
-  	<time datetime="2019-10-12T08:28:36.753Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>今天遇到一个问题，写Vue项目的时候习惯性的使用 history 模式的路由，但是之前是自己起一个nginx做一个404重定向到index.html，但是发现直接使用hash模式的时候是不用做这些操作的，不会存在这种404的问题，究其原因还是因为history是每次刷新都需要返回html信息的。</p>
-</blockquote>
-<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p><code>hash</code>模式最直观的地方就在于会在路由上加一个<code>#</code>，形如<code>localhost:8080/#/console</code>，这样的。好吧这个路由看起来有点丑，他的特点在于<code>#</code>会存在与理由中，不会存在于HTTP请求中，每次更改路由都是直接修改<code>#</code>后面的东西。不会重新加载页面，所以使用这种模式的时候不会发生刷新也不需要返回html资源。</p>
-<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><p>这种模式就很有意思了，颜值高，直接就是 <code>localhost:8080/console</code>这样，特点就在于每次修改都需要返回html信息，所以要么后端做个404重定向到index.html要么前端自己配。</p>
-<p>当然在兼容性封面上，</p>
-<p><code>hash</code>模式可以兼容到ie8</p>
-<p>参考别人的博客<br><a href="https://www.jianshu.com/p/9449d7605279" target="_blank" rel="noopener">History 和 Hash 的区别</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/01/ReactNative 启动卡死在‘Loading dependency graph, done.’， ‘info Running jetifier to migrate libraries to AndroidX. You can disable it using " --no-jetifier"="" flag.’="" "="" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ReactNative 启动卡死在‘Loading dependency graph, done.’， ‘info Running jetifier to migrate libraries to AndroidX. You can disable it using &#34;--no-jetifier&#34; flag.’
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/10/07/React@15.6.2源码解析-挂载阶段完成---从 ReactDOM.render 到页面渲染(5) ReactCompositeComponent/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">React@15.6.2源码解析-挂载阶段完成---从 ReactDOM.render 到页面渲染(5) ReactCompositeComponent</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash"><span class="toc-number">1.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#History"><span class="toc-number">2.</span> <span class="toc-text">History</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://shenweini.cn/2019/10/12/History 和 Hash 两种路由的区别/",
-  owner: 'shenweizheng110',
-  repo: 'blog-issue',
-  oauth: {
-    client_id: 'a8d8a41a47686ba574f8',
-    client_secret: '3ade0722f48c4687f79c8429ca36e2158d5e4e0e',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -305,8 +224,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

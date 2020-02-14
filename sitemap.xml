@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://shenweini.cn/2020/02/14/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS%E3%80%8B%E4%B8%8A%E7%AF%87%E6%95%B4%E7%90%86%20/</loc>
+    
+    <lastmod>2020-02-14T06:13:25.268Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://shenweini.cn/2019/11/01/ReactNative%20%E5%90%AF%E5%8A%A8%E5%8D%A1%E6%AD%BB%E5%9C%A8%E2%80%98Loading%20dependency%20graph,%20done.%E2%80%99%EF%BC%8C%20%E2%80%98info%20Running%20jetifier%20to%20migrate%20libraries%20to%20AndroidX.%20You%20can%20disable%20it%20using%20%22--no-jetifier%22%20flag.%E2%80%99/</loc>
     
     <lastmod>2019-11-01T08:04:47.190Z</lastmod>
