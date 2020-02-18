@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://shenweini.cn">
   <title>《你不知道的JS》上篇整理 | 唯你の博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！  作用域理解作用域首先来理解三个概念  引擎：从头到尾负责">
+  <meta name="description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《你不知道的JS》上篇整理">
 <meta property="og:url" content="http://shenweini.cn/2020/02/14/《你不知道的JS》上篇整理 /index.html">
 <meta property="og:site_name" content="唯你の博客">
-<meta property="og:description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！  作用域理解作用域首先来理解三个概念  引擎：从头到尾负责">
+<meta property="og:description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/shenweizheng/i08y8ib6hxtgxddn4m3kjv1d/image_1e1154j1f5qu1m4ft2dglag8b9.png">
-<meta property="og:updated_time" content="2020-02-14T06:13:25.268Z">
+<meta property="og:updated_time" content="2020-02-14T06:32:04.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《你不知道的JS》上篇整理">
-<meta name="twitter:description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！  作用域理解作用域首先来理解三个概念  引擎：从头到尾负责">
+<meta name="twitter:description" content="读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！">
 <meta name="twitter:image" content="http://static.zybuluo.com/shenweizheng/i08y8ib6hxtgxddn4m3kjv1d/image_1e1154j1f5qu1m4ft2dglag8b9.png">
   
   
@@ -174,6 +174,7 @@
         <blockquote>
 <p>读完《你不知道的js》已经过去很久了，正好顺着春招的气息，整理一波，复习一下JS基础，不得不说这本书刷新了我对JS得认知，看完红色的那本JS经典之后再来看这本你不知道的js简直就是爽爆了，如果能认认真真得啃完这两本书，理解深层次得js基础，那么js水准虽说距离阮一峰老师还有很大一截但至少能在中上游站稳脚跟。春招加油！！！努力进字节！！！</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>理解作用域首先来理解三个概念</p>
 <ul>
 <li><p>引擎：从头到尾负责整个JS程序得编译及执行过程</p>
@@ -739,11 +740,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,11 +792,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,10 +813,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
             
             <div class="clearfix"></div>
