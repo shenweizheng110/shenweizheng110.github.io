@@ -150,53 +150,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-测试Typora" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/19/测试Typora/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-《你不知道的JS》上篇整理 " class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -972,6 +925,92 @@
 
 
   
+    <article id="post-React源码解析----API概览 + React.Children 解析" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/React源码解析----API概览 + React.Children 解析/">React源码解析----API概览 + React.Children 解析</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/15/React源码解析----API概览 + React.Children 解析/" class="archive-article-date">
+  	<time datetime="2019-09-15T06:19:08.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近闲来无事，研究一波React源码，一开始是以Vue源码起步的，结果发现我对Vue实在是不熟悉，看Vue源码还不够格，相比而言，我更喜欢React，可能是因为第一个学的框架学的就是React，所以对React更加的充满热情，也更加的熟练，个人观点，React还是要比Vue牛逼一点好看一点的。</p>
+<p>React本身的源码是很少的，根据打包出来的Commonjs版本看来，React只有两千多行代码，但是ReactDom据说有两万多行，框架开发者实属伟大！致敬！！！</p>
+<p>那么这一篇是React一些通用的API概况和React.Children方法的解析，如有不到位或错误的地方欢迎指教，我的邮箱 <a href="mailto:1103107216@qq.com" target="_blank" rel="noopener">1103107216@qq.com</a> 您也可以下方评论。</p>
+</blockquote>
+<h2 id="React源码获取"><a href="#React源码获取" class="headerlink" title="React源码获取"></a>React源码获取</h2><p>我发现有两种方式，一种呢就是从<code>github</code>上拉取<code>react</code>项目的源码，github地址大家可以自己找，<code>git clone</code>下来之后，在<code>/packages/react</code>下面就是<code>react</code>的源码了，可以看到下面是分成了很多个小文件的，这个我一般用来看的不是用来调试的。</p>
+<p>另一个呢就是建一个项目，安装一下<code>cnpm i react react-dom -S</code>之后在<code>node_modules</code>里面找到<code>react</code>的源码，建一个项目，用<code>webpack</code>打包，装个<code>babel</code>一套，毕竟es6比es5好使多了，开个热更新，之后就直接修改这个<code>node_modules</code>里面的源码进行打印调试了，我个人喜欢<code>console.log</code>不解释，只有在调试一些算法问题时我才会开Debug模式。</p>
+        
+          <a class="article-more-a" href="/2019/09/15/React源码解析----API概览 + React.Children 解析/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/React源码解析----API概览 + React.Children 解析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1070,11 +1109,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,10 +1137,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -1110,7 +1145,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color5">mobx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1118,11 +1153,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
